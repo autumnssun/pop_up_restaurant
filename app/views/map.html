@@ -1,0 +1,21 @@
+<!--begin of overiding menu bar-->
+<!-- 
+<div content-for='leftMenuAction'>
+    <div class="btn btn-navbar" >
+        <i class="fa"></i><a href="#/dining">Back</a>
+    </div>
+</div> -->
+<div content-for="title">
+    <span>Stores around you</span>
+</div>
+
+<div content-for="rightMenuAction">
+    <div class="btn btn-navbar">
+        <i class="fa"></i>
+    </div>
+</div>
+<!--End of overiding menu bar-->
+</div>
+<google-map center="map.center" control="map.control" zoom="map.zoom" options="map.options" draggable="true" hm-rotate="myRot($event)">
+    <markers models="markers" coords="'self'" click="'click()'" options="'options'" events="markersEvents"></markers>
+</google-map>

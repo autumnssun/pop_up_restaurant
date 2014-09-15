@@ -1,0 +1,33 @@
+<div class="scrollable wellcome">
+
+    <div content-for="title">
+        <span>Login</span>
+    </div>
+
+    <div content-for="navbarAction">
+        <div class="btn btn-navbar">
+            <!-- <i class="fa"></i>{{user.username}} -->
+        </div>
+    </div>
+
+    <div class="scrollable-content">
+        <div class='login_module'>
+            <form class="form-signin" role="form" ng-submit="doSubmit()">
+                <h2>Please sign in</h2>
+                <label>User name:</label>
+                <input type="text" class="form-control" name="userName" ng-model="user.username" required placeholder='username'>
+
+                <label>Password:</label>
+                <input type="password" name="password" ng-model='user.password' class="form-control" placeholder="password" required="">
+
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+
+
+            </form>
+            <!-- <div>
+                <button ng-click='doLogOut()' class='btn btn-lg btn-secondary'>Log out</button>
+                <button ng-click='getSession()' class='btn btn-lg btn-secondary'>Get Session</button>
+            </div> -->
+        </div>
+    </div>
+</div>

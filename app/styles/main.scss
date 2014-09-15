@@ -1,0 +1,175 @@
+@import '../../bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-base.min.css';
+@import '../../bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-hover.min.css';
+@import '../../bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-desktop.min.css';
+ $white:#ffffff;
+ $paper:#fafafa;
+ $orga:#F45358;
+ $blue:#3FA8B0;
+ $showdowcolor:rgba(100, 100, 100, 0.5);
+@mixin shadow_1() {
+    $shadows: 0px 0px 4px 3px $showdowcolor;
+    -moz-box-shadow: $shadows;
+    -webkit-box-shadow: $shadows;
+    box-shadow: $shadows;
+}
+@mixin shadow_2() {
+    $shadows: 0px 0px 3px 0px $showdowcolor;
+    -moz-box-shadow: $shadows;
+    -webkit-box-shadow: $shadows;
+    box-shadow: $shadows;
+}
+@mixin shadow($amount) {
+    $shadows: 0px 0px $amount 0px $showdowcolor;
+    -moz-box-shadow: $shadows;
+    -webkit-box-shadow: $shadows;
+    box-shadow: $shadows;
+}
+@mixin border_radius($amount) {
+    -webkit-border-radius: $amount;
+    -moz-border-radius: $amount;
+    border-radius: $amount;
+}
+@mixin cardview() {
+    @include shadow(7px);
+    @include border_radius(2px);
+    border: 1px soild $white;
+    margin: 16px;
+}
+@mixin circle() {
+    @include border_radius(50%);
+    overflow: hidden;
+}
+@function calheight() {} .angular-google-map-container, .container, google-map .angular-google-map {
+    width: 100%;
+    height: 100%
+}
+.selectize-dropdown-content {
+    max-height: 140px;
+}
+.app-content {
+
+    .login_module{
+        padding:16px;
+        form{
+            input{
+                margin-bottom: 18px;
+            }
+        }
+    }
+    .wellcome {
+        .video {
+            width: 100%;
+            height: auto;
+        }
+    }
+    background:$white;
+    .food {
+        background: $orga;
+        z-index: 9999;
+        height: 64px;
+        padding: 6px;
+        color: $white;
+        position: absolute;
+        display: inline-block;
+        width: 100%;
+        @include shadow_1();
+        .cooker_thumbnail {
+            margin-top: 6px;
+            margin-left: 6px;
+            height: 48px;
+            width: 48px;
+            margin-right: 16px;
+            @include circle();
+        }
+        foodName {
+            font-size: 1.4em;
+            display: block;
+            font-weight: 800;
+        }
+        buy {
+            display: block;
+            background-color: $blue;
+            padding: 10px;
+            margin-top: 6px;
+            cursor: pointer;
+            font-weight: 800;
+            @include shadow_2();
+            @include border_radius(2px);
+        }
+        :hover {}
+    }
+    .popUpStore {
+        margin-top: 80px;
+        .item {
+            z-index: 998;
+        }
+        .active {
+            z-index: 9999;
+        }
+        .food_gallary {
+/*            position: absolute;*/
+            @include cardview();
+
+            background-color: $paper;
+            img {
+                @include border_radius(2px);
+                margin-bottom: 48px;
+            }
+        }
+    }
+}
+.buynow {
+    width: 100%;
+    background-color: $orga;
+    margin-top: 16px;
+    font-weight: 700;
+    color: $white;
+}
+.info_card {
+    @include shadow(7px);
+    @include border_radius(5px);
+    margin-bottom: 16px;
+    cardname {
+        background-color: $blue;
+        display: block;
+        width: 100%;
+        padding-left: 16px;
+        line-height: 2.4em;
+        color: $white;
+        font-weight: 500;
+        font-size: 1.4em;
+    }
+    .amount-box {
+
+        @include border_radius(0px);
+        .amount_selection {
+            width: 100%;
+            padding-right: 18px;
+            .amount_hightlight {
+                color: $orga;
+                font-weight: 800;
+            }
+        }
+    }
+}
+.overlay-body {
+    .cashier {
+        .buytop {
+            font-weight: 500;
+            color: $blue;
+        }
+        text-align:left;
+        height:100%;
+    }
+}
+/* Responsive: Portrait tablets and up */
+
+@media screen and (min-width: 768px) {
+    .container {}
+    /* Remove the padding we set earlier */
+    .header, .marketing, .footer {}
+    /* Space out the masthead */
+    .header {}
+    /* Remove the bottom border on the jumbotron for visual effect */
+    .jumbotron {}
+}

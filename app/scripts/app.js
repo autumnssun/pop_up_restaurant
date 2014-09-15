@@ -1,0 +1,99 @@
+'use strict';
+
+/**
+ * @ngdoc overview
+ * @name restaurantApp
+ * @description
+ * # restaurantApp
+ *
+ * Main module of the application.
+ */
+angular
+    .module('restaurantApp', [
+        'ngAnimate',
+        'ngCookies',
+        'ngResource',
+        'ngRoute',
+        'ngSanitize',
+        'ngTouch',
+        'google-maps',
+        'FBAngular',
+        'angular-gestures',
+        'angular-loading-bar',
+        'mobile-angular-ui',
+        'restangular',
+        'ui.router',
+        'ui.select'
+    ])
+// .run(function(user) {
+//     user.init({ appId: '' });
+// });
+.config(function($routeProvider, cfpLoadingBarProvider, RestangularProvider, uiSelectConfig) {
+    cfpLoadingBarProvider.includeSpinner = false; //configuring the loading theme
+    uiSelectConfig.theme = 'selectize'; //configuring the selection theme
+    //congfiguring restangular directive
+
+    RestangularProvider.setBaseUrl('https://api.parse.com/1/');
+    RestangularProvider.setDefaultHeaders({
+        'X-Parse-Application-Id': 'dCmrudTKTJFxZAZNMoFjolAutEpwrCDMX91tzGLg',
+        'X-Parse-REST-API-Key': 'MgOlryPflpjonYxpj2DvK9OPbbGc4xeFbQ4Np2o0',
+    });
+    RestangularProvider.setFullResponse(true);
+    RestangularProvider.setResponseExtractor(function(response, operation) {
+        var newResponse;
+        // This is a get for a list
+        switch (operation) {
+            case 'getList':
+                newResponse = response.results;
+                break;
+            case 'get':
+                //console.log(response);
+                newResponse = response;
+                break;
+
+            case 'getRequestedUrl':
+                console.log(response);
+                //newResponse = response;
+                break;
+            default:
+                newResponse = response;
+                break;
+        }
+        // console.log(newResponse);
+        return newResponse;
+    });
+    //end of restangular config
+
+    $routeProvider
+        .when('/', {
+            templateUrl: 'views/main.html',
+            controller: 'MainCtrl'
+        })
+        .when('/dining', {
+            templateUrl: 'views/map.html',
+            controller: 'MapCtrl'
+        })
+        .when('/store', {
+            templateUrl: 'views/store.html',
+            controller: 'StoreCtrl'
+        })
+        .when('/store/:dta', {
+            templateUrl: 'views/store.html',
+            controller: 'StoreCtrl'
+        })
+        .when('/cooker', {
+            templateUrl: 'views/cooking.html',
+            controller: 'CookingCtrl'
+        })
+        .when('/sandbox', {
+            templateUrl: 'views/sandbox.html',
+            controller: 'SandboxCtrl'
+        })
+        .when('/login', {
+            templateUrl: 'views/login.html',
+            controller: 'LoginCtrl'
+        })
+        .otherwise({
+            redirectTo: '/'
+        });
+});

@@ -1,0 +1,178 @@
+<!doctype html >
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/selectize/dist/css/selectize.css" />
+    <link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+</head>
+
+<body ng-app="restaurantApp">
+    <!--[if lt IE 7]>
+      fullscreen
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div class="sidebar sidebar-left" toggleable parent-active-class="sidebar-left-in" id="mainSidebar">
+        <a class="app-name">PopupRest</a>
+
+        <div class="scrollable">
+            <div class="scrollable-content">
+
+                <div  class="list-group" toggle="off" bubble target="mainSidebar" yield-to="user_info">
+                    
+                </div>
+
+                <div class="list-group" toggle="off" bubble target="mainSidebar">
+                    <a class="list-group-item" href="#/">HOME <i class="fa fa-chevron-right pull-right"></i></a>
+                    <a class="list-group-item" href="#/dining">Dinner <i class="fa fa-chevron-right pull-right"></i></a>
+                    <a class="list-group-item" href="#/cooker">Cooker <i class="fa fa-chevron-right pull-right"></i></a>
+
+                </div>
+
+                <div class="list-group" toggle="off" bubble target="mainSidebar">
+                    <a class="list-group-item" href="#/login">USER <i class="fa fa-chevron-right pull-right"></i></a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="app" ui-view>
+
+        <!-- Navbars -->
+        <div class="navbar navbar-app navbar-absolute-top">
+
+            <div class="navbar-brand navbar-brand-center" yield-to="title">
+                <span>Popup Restau</span>
+            </div>
+
+            <div class="btn-group pull-left" yield-to='leftMenuAction'>
+                <div ng-click="toggle('mainSidebar')" class="btn btn-navbar sidebar-toggle">
+                    <i class="fa fa-bars" id="icon"></i> Menu
+                </div>
+            </div>
+
+            <div class="btn-group pull-right" yield-to="rightMenuAction">
+
+            </div>
+        </div>
+
+        <!-- <div class="navbar navbar-app navbar-absolute-bottom">
+            <div class="btn-group justified">
+                <a href="#/route1" class="btn btn-navbar btn-icon-only"><i class="fa fa-home fa-navbar"></i></a>
+                <a href="#/route2" class="btn btn-navbar btn-icon-only"><i class="fa fa-list fa-navbar"></i></a>
+            </div>
+        </div> -->
+
+        <div class="app-body">
+            <ng-view class="app-content"></ng-view>
+        </div>
+    </div>
+    <toaster-container></toaster-container>
+
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+    <script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-XXXXX-X');
+    ga('send', 'pageview');
+    </script>
+
+    <script language="javascript" type="text/javascript">
+    window.history.forward();
+    </script>
+
+    <!-- build:js(.) scripts/oldieshim.js -->
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.js"></script>
+    <![endif]-->
+    <!-- endbuild -->
+    <script src='http://maps.googleapis.com/maps/api/js?key=AIzaSyCsRFjx301S86uHjMWxsiNIcPaVkMPvosU'></script>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/affix.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/alert.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/button.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/carousel.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/collapse.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/dropdown.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tab.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/transition.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/scrollspy.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/modal.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tooltip.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/popover.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+    <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
+    <script src="bower_components/angular-fullscreen/src/angular-fullscreen.js"></script>
+    <script src="bower_components/angular-gestures/gestures.js"></script>
+    <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="bower_components/overthrow-dist/overthrow.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/fastclick/lib/fastclick.js"></script>
+    <script src="bower_components/overthrow/dist/overthrow.js"></script>
+    <script src="bower_components/mobile-angular-ui/dist/js/mobile-angular-ui.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/restangular/dist/restangular.js"></script>
+    <script src="bower_components/sifter/sifter.js"></script>
+    <script src="bower_components/microplugin/src/microplugin.js"></script>
+    <script src="bower_components/selectize/dist/js/selectize.js"></script>
+    <script src="bower_components/angular-ui-select/dist/select.js"></script>
+    <script src="bower_components/authenticateJS/build/authenticate.js"></script>
+    <script src="bower_components/angular-notification/angular-notification.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <script src="http://www.parsecdn.com/js/parse-1.2.13.min.js"></script>
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/map.js"></script>
+    <script src="scripts/controllers/store.js"></script>
+    <script src="scripts/controllers/cooking.js"></script>
+    <script src="scripts/directives/foodcarousle.js"></script>
+    <script src="scripts/controllers/sandbox.js"></script>
+    <script src="scripts/controllers/login.js"></script>
+    <script src="scripts/services/loginservice.js"></script>
+    <!-- endbuild -->
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+<!--begin of overiding menu bar-->
+<div content-for='leftMenuAction'>
+    <div class="btn btn-navbar" >
+        <i class="fa"></i><a href="#/dining">Back</a>
+    </div>
+</div>
+<div content-for="title">
+    <span>Store</span>
+</div>
+
+<div content-for="navbarAction">
+    <div class="btn btn-navbar">
+        <i class="fa"></i>
+    </div>
+</div>
+<!--End of overiding menu bar-->
+
+<div class="food">
+    <div class="cooker_thumbnail pull-left">
+        <img ng-src={{cooker.photo.url}}>
+    </div>
+
+    <div class=" price pull-right">
+        <buy ng-click="buy({{thisFood}})">{{thisFood.price | currency}}/share</buy>
+    </div>
+    <div>
+        <foodName>{{thisFood.name}} - {{thisFood.numberOfServe}}
+        </foodName>
+        <div class="remain_time">Time remain</div>
+        <!-- <rate>Popularity: *****</rate> -->
+    </div>
+</div>
+<!-- <div overlay="myOverlay" default='active'> -->
+<div overlay="myOverlay">
+    <div class="cashier">
+
+        <h3 class="buytop">{{thisFood.name}} - By {{cooker.username}}</h3>
+
+        <!-- <ul class="list-group ">
+            <li class="list-group-item">
+                Cooker:
+                <span class="badge">{{cooker.username}}</span>
+            </li>
+        </ul> -->
+        <ul class="list-group info_card">
+            <cardname>Buying options</cardname>
+            <li class="list-group-item">
+                <label>Price:</label>
+                <span class="pull-right">{{thisFood.price | currency}}</span>
+            </li>
+
+            <!-- {{selectOptions.selected}} -->
+            <li class="list-group-item amount-box">
+                <ui-select ng-model="selectOptions.selected" theme="selectize">
+                    <ui-select-match placeholder="Amount of serve(s):" class='amount_selection'>Amount of serve(s) :
+                        <span class="amount_hightlight pull-right">{{$select.selected.amount}}</span>
+                    </ui-select-match>
+                    <ui-select-choices repeat="opt in selectOptions">
+                        <span ng-bind-html="opt.amount">Serves -</span>
+                        <span class='pull-right' ng-bind-html="opt.total | currency"></span>
+                    </ui-select-choices>
+                </ui-select>
+
+            </li>
+            <li class="list-group-item">
+                <label>TOTAL:</label>
+                <span class='pull-right'>{{total()| currency}}</span>
+            </li>
+        </ul>
+
+        <button type="button" class="btn btn-default btn-lg buynow" ng-click="confirm()">Place order</button>
+
+    </div>
+</div>
+
+
+
+<div class="scrollable">
+    <div class="scrollable-content">
+
+
+        <div class="popUpStore">
+
+            <div id="carousel-example" class="">
+                <div class="">
+
+                    <!--  <div class=" active food_gallary item" ng-repeat-start="foto in photoList" ng-if="$first" food-carousle> -->
+                    <div class="food_gallary item" ng-repeat-start="foto in photoList" ng-if="$first">
+                        <img ng-src={{foto.img.url}}>
+                    </div>
+                    <div class="food_gallary item" ng-repeat-end ng-if="!$first">
+                        <img ng-src={{foto.img.url}}>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

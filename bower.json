@@ -1,0 +1,37 @@
+{
+  "name": "restaurant",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": "~1.2.0",
+    "json3": "~3.3.1",
+    "es5-shim": "~3.1.0",
+    "bootstrap-sass-official": "~3.2.0",
+    "angular-resource": "~1.2.0",
+    "angular-cookies": "~1.2.0",
+    "angular-sanitize": "~1.2.0",
+    "angular-animate": "~1.2.0",
+    "angular-touch": "~1.2.0",
+    "angular-route": "~1.2.0",
+    "angularjs-google-maps": "~0.4.0",
+    "angular-google-maps": "~1.2.1",
+    "angular-fullscreen": "~1.0.0",
+    "angular-gestures": "~0.2.3",
+    "angular-loading-bar": "~0.5.2",
+    "overthrow-dist": "~0.7.0",
+    "mobile-angular-ui": "~1.1.0-beta.29",
+    "angular-ui-router": "~0.2.11",
+    "restangular": "~1.4.0",
+    "selectize": "~0.11.0",
+    "angular-ui-select": "~0.7.0",
+    "authenticateJS": "~0.1.1",
+    "angular-notification": "~0.2.3"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.2.0",
+    "angular-scenario": "~1.2.0"
+  },
+  "appPath": "app",
+  "resolutions": {
+    "angular": "1.2.23"
+  }
+}
