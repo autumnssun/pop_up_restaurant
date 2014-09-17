@@ -8,26 +8,37 @@
  * Service in the restaurantApp.
  */
 angular.module('restaurantApp')
-    .factory('userService', function userService(Restangular, $cookieStore) {
+    .factory('userService', function userService(Restangular, localStorageService) {
         var userDB = Restangular.all('login');
-        var sessionToken = null;
-        var userObjectID= null;
+        // $rootScope.sessionToken = null;
+        // $rootScope.userObjectID= null;
+        // $rootScope.userName=null;
 
         function getToken() {
-            return sessionToken;
+            return localStorageService.get('token');
+        }
+        
+        function setToken(_tk){
+        	localStorageService.set('token',_tk);
+        }
+        //userName
+        function getUserName(){
+        	return localStorageService.get('username');
+        }
+        function setUserName(_ursName){
+        	localStorageService.set('username',_ursName);
+        }
+
+        //user ID
+        function setUserObjecID(_objID){
+        	localStorageService.set('userID',_objID);
         }
         function getUserObjecID(){
-        	return userObjectID;
-        }
-        function setToken(_tk){
-        	sessionToken=_tk;
-        }
-        function setUserObjecID(_objID){
-        	userObjectID=_objID;
+        	return localStorageService.get('userID');
         }
 
         function isLogin() {
-            if (sessionToken!==null) {
+            if (localStorageService.get('token')!==null) {
                 return true;
             } else {
                 return false;
@@ -35,7 +46,8 @@ angular.module('restaurantApp')
         }
 
         function logout() {
-            $cookieStore.remove('userSessionCookies');
+            localStorageService.clearAll();
+            //$cookcookieStoreies.remove('userSessionCookies');
         }
 
         function login(_username, _password) {
@@ -52,8 +64,10 @@ angular.module('restaurantApp')
             login: login,
             getSessionToken: getToken,
             setSessionToken: setToken,
-            getUser:getUserObjecID,
-            setUser:setUserObjecID
+            getUserID:getUserObjecID,
+            setUserID:setUserObjecID,
+            getUserName:getUserName,
+            setUserName:setUserName,
         };
 
         return service;

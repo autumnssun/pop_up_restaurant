@@ -8,7 +8,7 @@
  * Controller of the restaurantApp
  */
 angular.module('restaurantApp')
-    .controller('LoginCtrl', function($scope, Restangular, $location, userService) {
+    .controller('LoginCtrl', function($scope, Restangular, $location, userService,ngToast) {
 
         $scope.user = {
             username: 'nano',
@@ -26,9 +26,19 @@ angular.module('restaurantApp')
 
         $scope.doSubmit = function() {
             userService.login($scope.user.username, $scope.user.password).then(function(data) {
+                console.log(data.data);
+                //saving important information into user services
                 userService.setSessionToken(data.data.sessionToken);
-                userService.setUser
+                userService.setUserName(data.data.username);
+                userService.setUserID(data.data.objectId);
+                //console.log(userService.getUserName());
+                //userService.setUser(data.data)
                 console.log('Yay!!');
+                
+                ngToast.create({
+                    content: '<label>Login Succesfull</label><br><span>Going back to home page</span>'
+                });
+                $location.path('#/');
 
             }, function() {
 

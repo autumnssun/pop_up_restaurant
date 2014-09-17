@@ -23,7 +23,9 @@ angular
         'mobile-angular-ui',
         'restangular',
         'ui.router',
-        'ui.select'
+        'ui.select',
+        'ngToast',
+        'LocalStorageModule'
     ])
 // .run(function(user) {
 //     user.init({ appId: '' });
@@ -37,6 +39,7 @@ angular
     RestangularProvider.setDefaultHeaders({
         'X-Parse-Application-Id': 'dCmrudTKTJFxZAZNMoFjolAutEpwrCDMX91tzGLg',
         'X-Parse-REST-API-Key': 'MgOlryPflpjonYxpj2DvK9OPbbGc4xeFbQ4Np2o0',
+        'Content-Type':'application/json'
     });
     RestangularProvider.setFullResponse(true);
     RestangularProvider.setResponseExtractor(function(response, operation) {

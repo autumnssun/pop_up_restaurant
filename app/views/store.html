@@ -5,7 +5,7 @@
     </div>
 </div>
 <div content-for="title">
-    <span>Store</span>
+    <span>{{thisFood.name}}</span>
 </div>
 
 <div content-for="navbarAction">
@@ -24,24 +24,18 @@
         <buy ng-click="buy({{thisFood}})">{{thisFood.price | currency}}/share</buy>
     </div>
     <div>
-        <foodName>{{thisFood.name}} - {{thisFood.numberOfServe}}
+        <foodName>Cook: {{cooker.username}}
         </foodName>
-        <div class="remain_time">Time remain</div>
+        <div class="remain_time">{{thisFood.numberOfServe}} serves remain</div>
         <!-- <rate>Popularity: *****</rate> -->
     </div>
 </div>
-<!-- <div overlay="myOverlay" default='active'> -->
-<div overlay="myOverlay">
-    <div class="cashier">
+<div overlay="myOverlay" default='active'>
+<!-- <div overlay="myOverlay">
+ -->    <div class="cashier">
 
         <h3 class="buytop">{{thisFood.name}} - By {{cooker.username}}</h3>
 
-        <!-- <ul class="list-group ">
-            <li class="list-group-item">
-                Cooker:
-                <span class="badge">{{cooker.username}}</span>
-            </li>
-        </ul> -->
         <ul class="list-group info_card">
             <cardname>Buying options</cardname>
             <li class="list-group-item">
@@ -69,6 +63,8 @@
         </ul>
 
         <button type="button" class="btn btn-default btn-lg buynow" ng-click="confirm()">Place order</button>
+
+        <button type="button" class="btn btn-default btn-lg buynow" ng-click="remove()">remove</button>
 
     </div>
 </div>

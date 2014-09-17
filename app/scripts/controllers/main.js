@@ -8,12 +8,8 @@
  * Controller of the restaurantApp
  */
 angular.module('restaurantApp')
-    .controller('MainCtrl', function($scope, $cookies) {
-    	$scope.showLoginBtn=true;
-
-        if ($cookies.userSessionCookies) {
-        	$scope.showLoginBtn=false;
-            console.log('you alreay log in');
-
-        }
+    .controller('MainCtrl', function($scope, $cookieStore, userService) {
+    	console.log($cookieStore);
+        $scope.userName=userService.getUserName();
+        console.log(userService.getUserName());
     });
