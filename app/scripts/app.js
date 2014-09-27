@@ -10,10 +10,10 @@
  */
 angular
     .module('restaurantApp', [
+        'ngRoute',
         'ngAnimate',
         'ngCookies',
         'ngResource',
-        'ngRoute',
         'ngSanitize',
         'ngTouch',
         'google-maps',
@@ -25,21 +25,32 @@ angular
         'ui.router',
         'ui.select',
         'ngToast',
-        'LocalStorageModule'
+        'LocalStorageModule',
+        'angularFileUpload',
+        'timer',
+        'geolocation',
+        'ui.bootstrap.datetimepicker'
     ])
 // .run(function(user) {
 //     user.init({ appId: '' });
 // });
 .config(function($routeProvider, cfpLoadingBarProvider, RestangularProvider, uiSelectConfig) {
+    
     cfpLoadingBarProvider.includeSpinner = false; //configuring the loading theme
+    
     uiSelectConfig.theme = 'selectize'; //configuring the selection theme
-    //congfiguring restangular directive
+    
 
+    //congfiguring restangular directive
+    //master key : gpCg1eiaS0HRGqbb1fxqaoaFzHlvLEveSFbPlOC8
     RestangularProvider.setBaseUrl('https://api.parse.com/1/');
     RestangularProvider.setDefaultHeaders({
         'X-Parse-Application-Id': 'dCmrudTKTJFxZAZNMoFjolAutEpwrCDMX91tzGLg',
         'X-Parse-REST-API-Key': 'MgOlryPflpjonYxpj2DvK9OPbbGc4xeFbQ4Np2o0',
-        'Content-Type':'application/json'
+        'Content-Type': 'application/json'
+    });
+    RestangularProvider.setRestangularFields({
+        //id: 'objectId'
     });
     RestangularProvider.setFullResponse(true);
     RestangularProvider.setResponseExtractor(function(response, operation) {
@@ -49,15 +60,15 @@ angular
             case 'getList':
                 newResponse = response.results;
                 break;
-            case 'get':
-                //console.log(response);
-                newResponse = response;
-                break;
+            // case 'get':
+            //     //console.log(response);
+            //     newResponse = response;
+            //     break;
 
-            case 'getRequestedUrl':
-                console.log(response);
-                //newResponse = response;
-                break;
+            // case 'getRequestedUrl':
+            //     //console.log(response);
+            //     //newResponse = response;
+            //     break;
             default:
                 newResponse = response;
                 break;
@@ -95,6 +106,10 @@ angular
         .when('/login', {
             templateUrl: 'views/login.html',
             controller: 'LoginCtrl'
+        })
+        .when('/sandbox', {
+          templateUrl: 'views/sandbox.html',
+          controller: 'SandboxCtrl'
         })
         .otherwise({
             redirectTo: '/'

@@ -16,6 +16,41 @@
 </div>
 <!--End of overiding menu bar-->
 </div>
-<google-map center="map.center" control="map.control" zoom="map.zoom" options="map.options" draggable="true" hm-rotate="myRot($event)">
-    <markers models="markers" coords="'self'" click="'click()'" options="'options'" events="markersEvents"></markers>
-</google-map>
+<div class="map_warp">
+    <google-map center="map.center" control="map.control" zoom="map.zoom" options="map.options" draggable="true" hm-rotate="myRot($event)">
+        <markers models="markers" icon="thumb" coords="'self'" click="'click()'" options="'options'" events="markersEvents" isLabel={labelContent:food.name}></markers>
+    </google-map>
+</div>
+<div class='map_list'>
+    <div class="scrollable">
+        <div class="scrollable-content">
+            <ul class="media-list">
+                <li class="media" ng-repeat='food in markers'>
+                    <a class="pull-left" href="#/store/{{food.objectId}}">
+                        <div class="thumb pull-left">
+                            <img ng-src={{food.thumb}} class="img-rounded img-responsive">
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">{{food.name}}</h4>
+                            <timer end-time="food.readyTime.iso">
+                                <span ng-show="days">{{days}}days,</span>
+                                <span ng-show="hours">{{hours}}hrs:</span>
+                                <span ng-show="minutes">{{minutes}}mins</span>
+                                <span ng-hide='minutes&&hours&&days'>Food have expired</span>
+                            </timer>
+                        </div>
+                    </a>
+                    <div ng-click="zoomToFood(food.latitude,food.longitude);" class="hud pull-right">
+                        <i class="fa fa-search-plus fa-2x"></i>
+                    </button>
+
+                    <!-- <button type="button" class="btn btn-default btn-lg">
+                        <span class="glyphicon glyphicon-star"></span>Star
+                    </button> -->
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+</div>

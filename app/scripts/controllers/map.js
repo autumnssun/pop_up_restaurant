@@ -8,19 +8,18 @@
  * Controller of the restaurantApp
  */
 angular.module('restaurantApp')
-    .controller('MapCtrl', function($scope, $http, $location, Restangular) {
+    .controller('MapCtrl', function($scope, $http, $location, foodService, geolocation) {
+        //get user current location as long as it is available zoom user to their current location
+        geolocation.getLocation().then(function(data) {
+            console.log(data);
+            $scope.map.center.latitude = data.coords.latitude;
+            $scope.map.center.longitude = data.coords.longitude;
 
-        Restangular.all('classes/food').getList().then(function(thing) {
-            var foods = thing.data;
-            for (var i = 0; i < foods.length; i++) {
-                foods[i].id = i;
-                foods[i].title = foods[i].name;
-                foods[i].latitude = foods[i].location.latitude;
-                foods[i].longitude = foods[i].location.longitude;
-            }
-            $scope.markers = foods;
         });
-
+        foodService.getAllFood().then(function(data) {
+            $scope.markers = (data);
+            console.log($scope.markers);
+        });
         //Creating the map here
         $scope.map = {
             control: {},
@@ -32,7 +31,15 @@ angular.module('restaurantApp')
             draggable: true,
             options: {
                 disableDefaultUI: true,
+
             }
+        };
+
+        $scope.zoomToFood = function(_lat, _long) {
+            console.log('zoming');
+            $scope.map.zoom = 17;
+            $scope.map.center.latitude = _lat;
+            $scope.map.center.longitude = _long;
         };
 
         //function to handle marker click
@@ -41,17 +48,10 @@ angular.module('restaurantApp')
                 if (model.$id) {
                     model = model.coords; //use scope portion then
                 }
-                //$scope.model = model;
 
                 $location.path('/store\/' + model.objectId);
                 //$scope.toggle('myOverlay', 'on');
                 $scope.$apply();
             }
-        };
-
-        //rotation handlers
-        $scope.myRot = function(event) {
-            console.log($scope.map.control.getGMap());
-            $scope.map.control.getGMap().setHeading(event.gesture.angle);
         };
     });

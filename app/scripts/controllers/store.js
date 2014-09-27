@@ -8,17 +8,33 @@
  * Controller of the restaurantApp
  */
 angular.module('restaurantApp')
-    .controller('StoreCtrl', function($scope, $routeParams, Restangular, $location, userService, $rootScope, ngToast) {
+    .controller('StoreCtrl', function($scope, $routeParams, $location, userService, $rootScope, foodService,Restangular,ngToast) {
         //Defining the data to be return to the view
-        $scope.photoList = [];
-        $scope.transaction = {};
-        $scope.selectOptions = [];
-        $scope.selectOptions.selected = [];
-        $scope.selectOptions.selected.amount=1;
-        var storeID = $routeParams.dta;
-        var foodDB = Restangular.one('classes/food', storeID);
+        //console.log(foodService.queryFood($routeParams.dta));
+        //selections object
         var orderDB = Restangular.all('classes/order');
-        var _food;
+        var storeID = $routeParams.dta;
+
+        foodService.buildCompledFood(storeID).then(function(_return) {
+            $scope.thisFood = _return;
+            console.log($scope.thisFood);
+        });
+
+        $scope.buy = function() {
+            $rootScope.toggle('myOverlay', 'on');
+        };
+
+        $scope.billTotal = function() {
+            if ($scope.thisFood.serveList&&$scope.thisFood.serveList.selected&&$scope.thisFood.serveList.selected.amount) {
+                return $scope.thisFood.serveList.selected.amount * $scope.thisFood.price;
+            } else {
+                return 0;
+            }
+        };
+
+        $scope.total = function(a,b) {
+            return a*b;
+        };
 
         var createParsePointer = function(_className, _objID) {
             var ptr = {
@@ -29,30 +45,31 @@ angular.module('restaurantApp')
             return ptr;
         };
 
-        $scope.buy = function() {
-            $rootScope.toggle('myOverlay', 'on');
-        };
 
         //confirm buying function
         $scope.confirm = function() {
-
-
             /* Tobe implemented later;
             $scope.transaction.delivery = false;
             $scope.transaction.deliveryAddress = '';
             $scope.transaction.paid = false;
             */
             //only place the 
-            if (userService.isLogin() && userService.getUserID()!== null) {
-                
-                $scope.transaction.food = createParsePointer('food', _food.objectId);
-                $scope.transaction.customer = createParsePointer('_User', userService.getUserID());
-                $scope.transaction.serve = $scope.selectOptions.selected.amount;
+            var thisobj = Restangular.one('classes/food', $scope.thisFood.objectId);
+            //updating the new one
+            thisobj.numberOfServe = $scope.thisFood.numberOfServe - $scope.thisFood.serveList.selected.amount;
+            console.log(thisobj.numberOfServe);
+            console.log(userService.isLogin());
+            
+            if (thisobj.numberOfServe >= 0 && userService.isLogin() && userService.getUserID() !== null) {
 
-                console.log($scope.transaction);
+                $scope.transaction.food = createParsePointer('food', $scope.thisFood.objectId);
+                $scope.transaction.customer = createParsePointer('_User', userService.getUserID());
+                $scope.transaction.serve = $scope.transaction.selectOptions.selected.amount;
+
+                //console.log($scope.transaction);
+                //Deduct the number of stock
                 orderDB.post(angular.toJson($scope.transaction)).then(function() {
                     //update the foodbd
-
                     ngToast.create({
                         content: '<p>Order placed</p>'
                     });
@@ -64,76 +81,28 @@ angular.module('restaurantApp')
                         content: 'Cannot place order at the moment'
                     });
                 });
+
+                //recordign the transaction
+                thisobj.put().then(function(d) {
+                        console.log(d);
+                        ngToast.create({
+                            content: 'Order place sucessfully'
+                        });
+                        $location.path('dining');
+                        $rootScope.toggle('myOverlay', 'off');
+                    },
+                    function() {
+                        ngToast.create({
+                            content: 'Problem with order'
+                        });
+                        $rootScope.toggle('myOverlay', 'off');
+                    });
             } else {
                 ngToast.create({
                     class: 'danger',
-                    content: 'Please login to place order'
+                    content: 'Can not place order now'
                 });
             }
+
         };
-
-        $scope.remove = function(){
-            var updating=Restangular.one('classes/food/'+storeID);
-            
-            $scope.thisFood.numberOfServe-=$scope.selectOptions.selected.amount;
-            console.log(updating);
-            console.log($scope.thisFood.numberOfServe);
-            
-            var json='{"numberOfServe":'+$scope.thisFood.numberOfServe+'}';
-            json='{"price":4534}';
-            console.log(json);
-            
-            updating.customPUT(null,null,storeID,json).then(function(data){
-                console.log(data.data);
-            },function(data){
-                console.log(data);
-            });
-        };
-
-        //starting of page logic
-        if ($routeParams.dta) {
-            //fetching this food in formation
-            
-            foodDB.get().then(function(data) {
-                    _food = data.data;
-                    $scope.thisFood = _food;
-
-                    for (var i = 1; i < _food.numberOfServe + 1; i++) {
-                        $scope.selectOptions.push({
-                            amount: i,
-                            total: i * _food.price,
-                        });
-
-                    }
-                    $scope.total = function() {
-                        return $scope.selectOptions.selected.amount * _food.price;
-                    };
-
-                    var cookerDB = Restangular.one('users', _food.cooker.objectId);
-                    cookerDB.get().then(function(data) {
-                        //console.log(data.data);
-                        $scope.cooker = data.data;
-                    });
-
-                    if (_food.photos) {
-                        angular.forEach(_food.photos, function(value) {
-                            Restangular.one('classes/photo', value).get().then(function(data) {
-                                $scope.photoList.push(data.data);
-                            });
-                        });
-                    }
-                },
-                //incase the promise fail inform people what happened
-                function() {
-                    ngToast.create({
-                        class: 'danger',
-                        content: '<label>This food is not available</label><br><span>Going back to home page</span>'
-                    });
-                    $location.path('#/dining');
-                });
-        } else {
-
-        }
-
-
     });

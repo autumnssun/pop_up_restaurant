@@ -17,28 +17,40 @@ angular.module('restaurantApp')
         function getToken() {
             return localStorageService.get('token');
         }
-        
-        function setToken(_tk){
-        	localStorageService.set('token',_tk);
+
+        function setToken(_tk) {
+            localStorageService.set('token', _tk);
         }
         //userName
-        function getUserName(){
-        	return localStorageService.get('username');
+        function getUserName() {
+            return localStorageService.get('username');
         }
-        function setUserName(_ursName){
-        	localStorageService.set('username',_ursName);
+
+        function setUserName(_ursName) {
+            localStorageService.set('username', _ursName);
         }
 
         //user ID
-        function setUserObjecID(_objID){
-        	localStorageService.set('userID',_objID);
-        }
-        function getUserObjecID(){
-        	return localStorageService.get('userID');
+        function setUserObjecID(_objID) {
+            localStorageService.set('userID', _objID);
         }
 
+        function getUserObjecID() {
+            return localStorageService.get('userID');
+        }
+
+        //get user poitner
+        function getUserPointer() {
+            return {
+                '__type': 'Pointer',
+                'className': '_User',
+                'objectId':localStorageService.get('userID')
+            };
+        }
+
+
         function isLogin() {
-            if (localStorageService.get('token')!==null) {
+            if (localStorageService.get('token') !== null) {
                 return true;
             } else {
                 return false;
@@ -64,10 +76,11 @@ angular.module('restaurantApp')
             login: login,
             getSessionToken: getToken,
             setSessionToken: setToken,
-            getUserID:getUserObjecID,
-            setUserID:setUserObjecID,
-            getUserName:getUserName,
-            setUserName:setUserName,
+            getUserID: getUserObjecID,
+            setUserID: setUserObjecID,
+            getUserName: getUserName,
+            setUserName: setUserName,
+            getUserPointer: getUserPointer,
         };
 
         return service;

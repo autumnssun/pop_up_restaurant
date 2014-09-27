@@ -1,6 +1,7 @@
 @import '../../bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-base.min.css';
 @import '../../bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-hover.min.css';
 @import '../../bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-desktop.min.css';
+
  $white:#ffffff;
  $paper:#fafafa;
  $orga:#F45358;
@@ -39,19 +40,61 @@
     @include border_radius(50%);
     overflow: hidden;
 }
-@function calheight() {} .angular-google-map-container, .container, google-map .angular-google-map {
+.angular-google-map, .angular-google-map-container, google-map {
     width: 100%;
-    height: 100%
+    height: 100%;
+}
+*:hover{
+    text-decoration: none !important;
+}
+
+.map_warp, .map_list {
+    height: 50%;
+    position: relative;
+}
+.map_list {
+    @include shadow(20);
+    
+    .media {
+        .thumb {
+            margin: 10px;
+            width: 4em;
+            height: 4em;
+            border: 1px solid white;
+            overflow: hidden;
+            @include shadow(5px);
+            @include border_radius(2em);
+            img {
+                margin-left: -20%;
+                margin-right: -20%;
+                min-width: 150%;
+                min-height: 150%;
+                width: auto;
+                height: auto;
+            }
+        }
+        .hud{
+            margin-top: 16px;
+            margin-right: 16px;
+            color: $blue;
+        }
+        .media-body {
+            margin-top: 16px;
+        }
+
+    }
 }
 .selectize-dropdown-content {
     max-height: 140px;
 }
 .app-content {
-
-    .login_module{
-        padding:16px;
-        form{
-            input{
+    .media {
+        margin-top: 0;
+    }
+    .login_module {
+        padding: 16px;
+        form {
+            input {
                 margin-bottom: 18px;
             }
         }
@@ -107,13 +150,15 @@
             z-index: 9999;
         }
         .food_gallary {
-/*            position: absolute;*/
+            /*            position: absolute;*/
             @include cardview();
-
+            padding: 8px;
             background-color: $paper;
             img {
+                width: 100%;
+                height: auto;
                 @include border_radius(2px);
-                margin-bottom: 48px;
+                /*margin-bottom: 48px;*/
             }
         }
     }
@@ -140,7 +185,6 @@
         font-size: 1.4em;
     }
     .amount-box {
-
         @include border_radius(0px);
         .amount_selection {
             width: 100%;
@@ -164,12 +208,34 @@
 }
 /* Responsive: Portrait tablets and up */
 
-@media screen and (min-width: 768px) {
+/*@media screen and (min-width: 768px) {
+*/  
+@media screen and (min-width: 1020px) { 
     .container {}
     /* Remove the padding we set earlier */
     .header, .marketing, .footer {}
     /* Space out the masthead */
     .header {}
     /* Remove the bottom border on the jumbotron for visual effect */
-    .jumbotron {}
+    .jumbotron {} .map_warp, .map_list {
+        height: 100%;
+        float: right;
+        display: inline-block;
+    }
+    .map_list {
+        width: 40%;
+        @include shadow_2();
+    }
+    .map_warp {
+        width: 60%;
+    }
+}
+.labels-icon {
+    background-color: rgba($orga, 0.7);
+    padding: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
 }

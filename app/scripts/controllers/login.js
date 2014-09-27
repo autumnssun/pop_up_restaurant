@@ -11,8 +11,8 @@ angular.module('restaurantApp')
     .controller('LoginCtrl', function($scope, Restangular, $location, userService,ngToast) {
 
         $scope.user = {
-            username: 'nano',
-            password: '123'
+            username: '',
+            password: ''
         };
 
         $scope.getSession = function() {
@@ -33,7 +33,7 @@ angular.module('restaurantApp')
                 userService.setUserID(data.data.objectId);
                 //console.log(userService.getUserName());
                 //userService.setUser(data.data)
-                console.log('Yay!!');
+                //console.log('Yay!!');
                 
                 ngToast.create({
                     content: '<label>Login Succesfull</label><br><span>Going back to home page</span>'

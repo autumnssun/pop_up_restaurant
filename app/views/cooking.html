@@ -4,14 +4,34 @@
         <i class="fa"></i><a href="#/dining">Back</a>
     </div>
 </div> -->
-<div content-for="title">
-    <span>Sell your food</span>
-</div>
+<div class="scrollable">
+    <div class="scrollable-content">
+        <div content-for="title">
+            <span>Sell your food</span>
+        </div>
 
-<!-- <div content-for="rightMenuAction">
-    <div class="btn btn-navbar">
-        <i class="fa"></i>
+        <div class='login_module'>
+            <h1>Share your food</h1>
+            <form novalidate class="simple-form">
+                <label>What are you cooking?</label>
+                <br/>
+                <input type="text" ng-model="food.name" class="form-control" />
+                <br />
+                <label>Cusine:</label>
+                <br/>
+                <input type="text" ng-model="food.cusine" class="form-control" />
+                <br/>
+                <label>Price pershare:</label>
+                <br/>
+                <input type="number" ng-model="food.price" class="form-control" />
+                <br/>
+                <label>Time</label>
+                <div date-picker="start" view="year"></div>
+
+                <br/>
+                <button class="btn btn-default" ng-click="selling(food)">Sale</button>
+            </form>
+        </div>
+
     </div>
-</div> -->
-<!--End of overiding menu bar-->
-<h1>HELLO COOKERS</h1>
+</div>

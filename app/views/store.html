@@ -1,11 +1,11 @@
 <!--begin of overiding menu bar-->
 <div content-for='leftMenuAction'>
-    <div class="btn btn-navbar" >
+    <div class="btn btn-navbar">
         <i class="fa"></i><a href="#/dining">Back</a>
     </div>
 </div>
 <div content-for="title">
-    <span>{{thisFood.name}}</span>
+    <span>{{thisFood.cookerinfo.username}} 's Restaurant</span>
 </div>
 
 <div content-for="navbarAction">
@@ -17,24 +17,30 @@
 
 <div class="food">
     <div class="cooker_thumbnail pull-left">
-        <img ng-src={{cooker.photo.url}}>
+        <img ng-src={{thisFood.cookerinfo.photo.url}}>
     </div>
 
     <div class=" price pull-right">
         <buy ng-click="buy({{thisFood}})">{{thisFood.price | currency}}/share</buy>
     </div>
     <div>
-        <foodName>Cook: {{cooker.username}}
+        <foodName>{{thisFood.cookerinfo.username}} - {{thisFood.cookerinfo.rating}} Stars
         </foodName>
-        <div class="remain_time">{{thisFood.numberOfServe}} serves remain</div>
+        <div class="remain_time">{{thisFood.name}} will be ready in:
+            <timer end-time="thisFood.readyTime.iso">
+                <span ng-show="days">{{days}} Day,</span>
+                <span ng-show="hours">{{hours}} Hours, </span>
+                <span ng-show="minutes">{{minutes}} minutes.</span>
+            </timer>
+        </div>
         <!-- <rate>Popularity: *****</rate> -->
     </div>
 </div>
-<div overlay="myOverlay" default='active'>
-<!-- <div overlay="myOverlay">
- -->    <div class="cashier">
+<!-- <div overlay="myOverlay" default='active'> -->
+<div overlay="myOverlay">
+    <div class="cashier">
 
-        <h3 class="buytop">{{thisFood.name}} - By {{cooker.username}}</h3>
+        <h3 class="buytop">{{thisFood.name}} - By {{thisFood.cookerinfo.username}}</h3>
 
         <ul class="list-group info_card">
             <cardname>Buying options</cardname>
@@ -45,11 +51,11 @@
 
             <!-- {{selectOptions.selected}} -->
             <li class="list-group-item amount-box">
-                <ui-select ng-model="selectOptions.selected" theme="selectize">
+                <ui-select ng-model="thisFood.serveList.selected" theme="selectize">
                     <ui-select-match placeholder="Amount of serve(s):" class='amount_selection'>Amount of serve(s) :
                         <span class="amount_hightlight pull-right">{{$select.selected.amount}}</span>
                     </ui-select-match>
-                    <ui-select-choices repeat="opt in selectOptions">
+                    <ui-select-choices repeat="opt in thisFood.serveList">
                         <span ng-bind-html="opt.amount">Serves -</span>
                         <span class='pull-right' ng-bind-html="opt.total | currency"></span>
                     </ui-select-choices>
@@ -58,13 +64,11 @@
             </li>
             <li class="list-group-item">
                 <label>TOTAL:</label>
-                <span class='pull-right'>{{total()| currency}}</span>
+                <span class='pull-right'>{{total(thisFood.transaction.selected.amount,thisFood.price)| currency}}</span>
             </li>
         </ul>
 
         <button type="button" class="btn btn-default btn-lg buynow" ng-click="confirm()">Place order</button>
-
-        <button type="button" class="btn btn-default btn-lg buynow" ng-click="remove()">remove</button>
 
     </div>
 </div>
@@ -76,12 +80,17 @@
 
 
         <div class="popUpStore">
-
+            <div class='info_card food_gallary'>
+                <cardname>{{thisFood.name}} - {{thisFood.numberOfServe}} serve(s) remains</cardname>
+                <p>{{thisFood.description}}</p>
+                <p>{{thisFood.location}}</p>
+            </div>
             <div id="carousel-example" class="">
                 <div class="">
 
+
                     <!--  <div class=" active food_gallary item" ng-repeat-start="foto in photoList" ng-if="$first" food-carousle> -->
-                    <div class="food_gallary item" ng-repeat-start="foto in photoList" ng-if="$first">
+                    <div class="food_gallary item" ng-repeat-start="foto in thisFood.photoList" ng-if="$first">
                         <img ng-src={{foto.img.url}}>
                     </div>
                     <div class="food_gallary item" ng-repeat-end ng-if="!$first">
