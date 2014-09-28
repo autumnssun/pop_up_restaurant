@@ -29,7 +29,9 @@ angular
         'angularFileUpload',
         'timer',
         'geolocation',
-        'ui.bootstrap.datetimepicker'
+        'ui.bootstrap',
+        'ui.bootstrap.datetimepicker',
+        // 'mgcrea.ngStrap'
     ])
 // .run(function(user) {
 //     user.init({ appId: '' });

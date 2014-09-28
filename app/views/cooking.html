@@ -15,23 +15,44 @@
             <form novalidate class="simple-form">
                 <label>What are you cooking?</label>
                 <br/>
-                <input type="text" ng-model="food.name" class="form-control" />
+                <input type="text" ng-model="food.name" class="form-control" ng-required />
                 <br />
                 <label>Cusine:</label>
                 <br/>
-                <input type="text" ng-model="food.cusine" class="form-control" />
+                <input type="text" ng-model="food.cusine" class="form-control" ng-required />
+                <label>Description:</label>
+                <br/>
+                <textarea ng-model="food.description" class="form-control" ng-required />
                 <br/>
                 <label>Price pershare:</label>
                 <br/>
-                <input type="number" ng-model="food.price" class="form-control" />
+                <input type="number" ng-model="food.price" class="form-control" ng-required />
                 <br/>
                 <label>Time</label>
-                <div date-picker="start" view="year"></div>
-
+                <datetimepicker data-ng-model="data.date" ng-required></datetimepicker>
+                <!--  <div class="form-group">
+                    <label class="control-label"><i class="fa fa-calendar"></i> Datetime picker</label>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" size="10" class="form-control" ng-model="sharedDate" data-autoclose="1" placeholder="Date" bs-datepicker>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" size="8" class="form-control" ng-model="sharedDate" data-autoclose="1" placeholder="Time" bs-timepicker>
+                    </div>
+                </div> -->
                 <br/>
-                <button class="btn btn-default" ng-click="selling(food)">Sale</button>
+                <label>
+                    Images
+                </label>
+                <div ng-repeat="link in fileLinks">
+                    <img ng-src={{link}} />
+                </div>
+                <div file_upload></div>
+
+                <button class="btn btn-default btn-primary" ng-click="selling(food)">Sale</button>
             </form>
         </div>
+        {{food}}
 
     </div>
 </div>

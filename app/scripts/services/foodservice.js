@@ -60,25 +60,35 @@ angular.module('restaurantApp')
                 var i = 0;
 
                 angular.forEach(foods, function(food) {
-                    //console.log(food);
+                    console.log(food);
                     food.id = i;
                     food.title = food.name;
                     food.latitude = food.location.latitude;
                     food.longitude = food.location.longitude;
-                    if (food.photos) {
-                        queryPhotoUrl(food.photos[0])
-                            .then(function(data) {
-                                food.thumb = data;
+                    food.thumb = food.photos[0];
 
-                                food.options = {
-                                    icon: 'images/tip-01.png',
-                                    labelContent: food.name,
-                                    labelClass: 'labels-icon', // the CSS class for the label
-                                    labelAnchor: '6 31'
-                                };
-                            });
-                        i++;
-                    }
+                    food.options = {
+                        icon: 'images/tip-01.png',
+                        labelContent: food.name,
+                        labelClass: 'labels-icon', // the CSS class for the label
+                        labelAnchor: '6 31'
+                    };
+
+                    //if use photo as pointers then fo this
+                    // if (food.photos) {
+                    //     queryPhotoUrl(food.photos[0])
+                    //         .then(function(data) {
+                    //             food.thumb = data;
+
+                    //             food.options = {
+                    //                 icon: 'images/tip-01.png',
+                    //                 labelContent: food.name,
+                    //                 labelClass: 'labels-icon', // the CSS class for the label
+                    //                 labelAnchor: '6 31'
+                    //             };
+                    //         });
+                    //     i++;
+                    // }
                 });
 
                 return foods;
@@ -103,6 +113,7 @@ angular.module('restaurantApp')
                 queryCooker(data.data.cooker.objectId).then(function(ckr) {
                     returnObject.cookerinfo = ckr.data;
                 });
+                //if using photos as pointer do this
                 queryPhotos(data.data.photos).then(function(pts) {
                     returnObject.photoList = pts;
                 });

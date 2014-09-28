@@ -35,7 +35,7 @@ angular.module('restaurantApp')
         $scope.total = function(a,b) {
             return a*b;
         };
-
+        
         var createParsePointer = function(_className, _objID) {
             var ptr = {
                 '__type': 'Pointer',

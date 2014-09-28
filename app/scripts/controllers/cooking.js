@@ -11,7 +11,7 @@ angular.module('restaurantApp')
     .controller('CookingCtrl', function($scope, userService, foodService, geolocation) {
         $scope.food = {};
         //just some dummy data 1st
-        $scope.food.photos = ['s3C1Q1Jwzs', 'YTEe8kZLKR', 'Y5N5hS8XrM'];
+        
         $scope.food.numberOfServe = 20;
         // get current user
         $scope.food.cooker = userService.getUserPointer();
@@ -21,7 +21,7 @@ angular.module('restaurantApp')
             $scope.food.location = createParseGeoPoint(data.coords.latitude, data.coords.longitude);
         });
 
-//
+        //
         var createParseGeoPoint = function(_lat, _long) {
             return {
                 '__type': 'GeoPoint',
@@ -41,7 +41,10 @@ angular.module('restaurantApp')
         };
 
         $scope.selling = function(_food) {
+            $scope.food.photos = $scope.fileLinks;
             console.log(_food);
+
             foodService.saleFood(_food);
         };
+
     });

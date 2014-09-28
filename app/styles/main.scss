@@ -1,7 +1,6 @@
 @import '../../bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-base.min.css';
 @import '../../bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-hover.min.css';
 @import '../../bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-desktop.min.css';
-
  $white:#ffffff;
  $paper:#fafafa;
  $orga:#F45358;
@@ -44,7 +43,7 @@
     width: 100%;
     height: 100%;
 }
-*:hover{
+*:hover {
     text-decoration: none !important;
 }
 
@@ -54,7 +53,6 @@
 }
 .map_list {
     @include shadow(20);
-    
     .media {
         .thumb {
             margin: 10px;
@@ -73,7 +71,7 @@
                 height: auto;
             }
         }
-        .hud{
+        .hud {
             margin-top: 16px;
             margin-right: 16px;
             color: $blue;
@@ -81,7 +79,6 @@
         .media-body {
             margin-top: 16px;
         }
-
     }
 }
 .selectize-dropdown-content {
@@ -206,11 +203,37 @@
         height:100%;
     }
 }
+.custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+
+    &:hover:before {
+        border-color: black;
+    }
+    &:before {
+        content: 'Select some files';
+        display: inline-block;
+        background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+        border: 1px solid #999;
+        border-radius: 3px;
+        padding: 5px 8px;
+        outline: none;
+        white-space: nowrap;
+        -webkit-user-select: none;
+        cursor: pointer;
+        text-shadow: 1px 1px #fff;
+        font-weight: 700;
+        font-size: 10pt;
+    }
+    &:active:before {
+        background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+    }
+}
 /* Responsive: Portrait tablets and up */
 
 /*@media screen and (min-width: 768px) {
-*/  
-@media screen and (min-width: 1020px) { 
+*/
+
+@media screen and (min-width: 1020px) {
     .container {}
     /* Remove the padding we set earlier */
     .header, .marketing, .footer {}
