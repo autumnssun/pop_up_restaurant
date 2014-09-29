@@ -35,11 +35,11 @@ angular.module('restaurantApp')
             });
         };
 
-        var queryPhotoUrl = function(_ID) {
-            return photoDb.get(_ID).then(function(data) {
-                return data.data.img.url;
-            });
-        };
+        // var queryPhotoUrl = function(_ID) {
+        //     return photoDb.get(_ID).then(function(data) {
+        //         return data.data.img.url;
+        //     });
+        // };
 
         var getFoodAndThumbnail = function(_ID) {
             return queryFood(_ID).then(function(data) {

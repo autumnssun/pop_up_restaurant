@@ -31,7 +31,7 @@ angular
         'geolocation',
         'ui.bootstrap',
         'ui.bootstrap.datetimepicker',
-        // 'mgcrea.ngStrap'
+        'mgcrea.ngStrap'
     ])
 // .run(function(user) {
 //     user.init({ appId: '' });
