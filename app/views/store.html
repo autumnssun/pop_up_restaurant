@@ -83,18 +83,17 @@
             <div class='info_card food_gallary'>
                 <cardname>{{thisFood.name}} - {{thisFood.numberOfServe}} serve(s) remains</cardname>
                 <p>{{thisFood.description}}</p>
-                <p>{{thisFood.location}}</p>
+                <p>{{thisFood.address}}</p>
             </div>
             <div id="carousel-example" class="">
                 <div class="">
 
 
-                    <!--  <div class=" active food_gallary item" ng-repeat-start="foto in photoList" ng-if="$first" food-carousle> -->
-                    <div class="food_gallary item" ng-repeat-start="foto in thisFood.photoList" ng-if="$first">
-                        <img ng-src={{foto.img.url}}>
+                    <div class="food_gallary item" ng-repeat-start="foto in thisFood.photos" ng-if="$first">
+                        <img ng-src={{foto}}>
                     </div>
                     <div class="food_gallary item" ng-repeat-end ng-if="!$first">
-                        <img ng-src={{foto.img.url}}>
+                        <img ng-src={{foto}}>
                     </div>
 
                 </div>
