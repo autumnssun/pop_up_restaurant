@@ -113,6 +113,10 @@ angular
           templateUrl: 'views/sandbox.html',
           controller: 'SandboxCtrl'
         })
+        .when('/userProfile', {
+          templateUrl: 'views/userprofile.html',
+          controller: 'UserprofileCtrl'
+        })
         .otherwise({
             redirectTo: '/'
         });

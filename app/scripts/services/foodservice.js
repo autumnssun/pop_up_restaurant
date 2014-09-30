@@ -73,22 +73,7 @@ angular.module('restaurantApp')
                         labelClass: 'labels-icon', // the CSS class for the label
                         labelAnchor: '6 31'
                     };
-
-                    //if use photo as pointers then fo this
-                    // if (food.photos) {
-                    //     queryPhotoUrl(food.photos[0])
-                    //         .then(function(data) {
-                    //             food.thumb = data;
-
-                    //             food.options = {
-                    //                 icon: 'images/tip-01.png',
-                    //                 labelContent: food.name,
-                    //                 labelClass: 'labels-icon', // the CSS class for the label
-                    //                 labelAnchor: '6 31'
-                    //             };
-                    //         });
-                    //     i++;
-                    // }
+                    i++;
                 });
 
                 return foods;

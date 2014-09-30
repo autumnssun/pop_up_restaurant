@@ -9,7 +9,9 @@
  */
 angular.module('restaurantApp')
     .controller('LoginCtrl', function($scope, Restangular, $location, userService,ngToast) {
-
+        if(userService.isLogin()){
+            $location.path('userProfile');
+        }
         $scope.user = {
             username: '',
             password: ''

@@ -10,6 +10,7 @@
 angular.module('restaurantApp')
     .factory('userService', function userService(Restangular, localStorageService) {
         var userDB = Restangular.all('login');
+        var userQuery = Restangular.all('users');
         // $rootScope.sessionToken = null;
         // $rootScope.userObjectID= null;
         // $rootScope.userName=null;
@@ -44,7 +45,7 @@ angular.module('restaurantApp')
             return {
                 '__type': 'Pointer',
                 'className': '_User',
-                'objectId':localStorageService.get('userID')
+                'objectId': localStorageService.get('userID')
             };
         }
 
@@ -55,6 +56,13 @@ angular.module('restaurantApp')
             } else {
                 return false;
             }
+        }
+
+        function getCurrentUserData() {
+            return userQuery.get(getUserObjecID()).then(function(data) {
+                console.log(data);
+                return data.data;
+            });
         }
 
         function logout() {
@@ -71,6 +79,7 @@ angular.module('restaurantApp')
 
 
         var service = {
+            getCurrentUserData:getCurrentUserData,
             isLogin: isLogin,
             logout: logout,
             login: login,

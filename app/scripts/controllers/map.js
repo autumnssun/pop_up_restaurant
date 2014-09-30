@@ -11,7 +11,7 @@ angular.module('restaurantApp')
     .controller('MapCtrl', function($scope, $http, $location, foodService, geolocation) {
         //get user current location as long as it is available zoom user to their current location
         geolocation.getLocation().then(function(data) {
-            console.log(data);
+            // console.log(data);
             $scope.map.center.latitude = data.coords.latitude;
             $scope.map.center.longitude = data.coords.longitude;
 
