@@ -9,6 +9,7 @@
  */
 angular.module('restaurantApp')
     .controller('MapCtrl', function($scope, $http, $location, foodService, geolocation) {
+        $scope.foodNotAvailable = true;
         //get user current location as long as it is available zoom user to their current location
         geolocation.getLocation().then(function(data) {
             // console.log(data);
@@ -18,6 +19,8 @@ angular.module('restaurantApp')
         });
         foodService.getAllFood().then(function(data) {
             $scope.markers = (data);
+            $scope.predicate = '-longitude';
+            $scope.foodNotAvailable = false;
             console.log($scope.markers);
         });
         //Creating the map here
@@ -48,6 +51,7 @@ angular.module('restaurantApp')
                 if (model.$id) {
                     model = model.coords; //use scope portion then
                 }
+
 
                 $location.path('/store\/' + model.objectId);
                 //$scope.toggle('myOverlay', 'on');

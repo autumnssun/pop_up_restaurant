@@ -8,10 +8,15 @@
  * Service in the restaurantApp.
  */
 angular.module('restaurantApp')
-    .service('foodService', function foodService(Restangular, $q) {
+    .service('foodService', function foodService(Restangular, $q,addressService,$location) {
         var foodDb = Restangular.all('classes/food');
         var cookerDb = Restangular.all('users');
         var photoDb = Restangular.all('classes/photo');
+        var myCurrentLocation;
+        addressService.getCurrentLocation().then(function(data){
+            console.log(data);
+            myCurrentLocation=data;
+        });
 
         var queryFood = function(_ID) {
             return foodDb.get(_ID);
@@ -44,11 +49,12 @@ angular.module('restaurantApp')
         var getFoodAndThumbnail = function(_ID) {
             return queryFood(_ID).then(function(data) {
                 returnObject = data.data;
-                if (data.data.photos[0]) {
-                    queryPhoto(data.data.photos[0]).then(function(pts) {
-                        returnObject.thumb = pts;
-                    });
-                }
+                returnObject.thumb = data.data.photos[0];
+                // if (data.data.photos[0]) {
+                //     queryPhoto(data.data.photos[0]).then(function(pts) {
+                //         returnObject.thumb = pts;
+                //     });
+                // }
 
                 return returnObject;
             });
@@ -60,13 +66,11 @@ angular.module('restaurantApp')
                 var i = 0;
 
                 angular.forEach(foods, function(food) {
-                    console.log(food);
                     food.id = i;
                     food.title = food.name;
                     food.latitude = food.location.latitude;
                     food.longitude = food.location.longitude;
                     food.thumb = food.photos[0];
-
                     food.options = {
                         icon: 'images/tip-01.png',
                         labelContent: food.name,
@@ -75,6 +79,8 @@ angular.module('restaurantApp')
                     };
                     i++;
                 });
+                foods.sortbyKey = 'longitude';
+                // console.log(foods);
 
                 return foods;
             });
@@ -99,10 +105,15 @@ angular.module('restaurantApp')
                     returnObject.cookerinfo = ckr.data;
                 });
                 //if using photos as pointer do this
-                queryPhotos(data.data.photos).then(function(pts) {
-                    returnObject.photoList = pts;
-                });
+                if (data.data.photos.length !== 0) {
+                    returnObject.photoList = data.data.photos;
+                }
+                // queryPhotos(data.data.photos).then(function(pts) {
+                //     returnObject.photoList = pts;
+                // });
                 return returnObject;
+            },function(){
+                $location.path('dining');
             });
         };
 
@@ -116,7 +127,7 @@ angular.module('restaurantApp')
             // queryFood: queryFood,
             // queryCooker: queryCooker,
             // queryPhoto: queryPhoto,
-            // queryPhotos: queryPhotos,
+            queryPhotos: queryPhotos,
             buildCompledFood: buildCompledFood,
             getFoodAndThumbnail: getFoodAndThumbnail,
             getAllFood: getAllFood,

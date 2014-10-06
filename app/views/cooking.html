@@ -5,44 +5,58 @@
 </div>
 <div class="scrollable">
     <div class="scrollable-content">
-<!--     {{food}}
- -->        <div class='login_module'>
-            <form class="simple-form">
+        <div class=''>
+            <form class="simple-form" name="sellingFood">
+                <div class="col-xs-12">
+                    <br/>
+                    <caption>Let's Show your food to eveybody with some information</caption>
+                </div>
                 <div class="col-xs-12 col-sm-6">
+                    <br/>
                     <label>What are you cooking?</label>
                     <input type="text" ng-model="food.name" class="form-control" ng-required />
+                    <br/>
                     <label>Cusine:</label>
                     <input type="text" ng-model="food.cusine" class="form-control" ng-required />
+                    <br/>
                     <label>Description:</label>
                     <textarea ng-model="food.description" class="form-control" ng-required></textarea>
-                    <label> Where are you cooking</label>
-                    <input type="text"ng-model="food.address" class="form-control" ng-required/>
-                    <label> How many serves you will cook</label>
-                    <input type="number"ng-model="food.numberOfServe" class="form-control" ng-required/>
+                    <br/>
+                    <label>Where can the food be picked up?</label>
+                    <input type="text" ng-model="food.address" class="form-control" ng-required/>
+                    <br/>
+                    <label>How many serves you will cook</label>
+                    <input type="number" ng-model="food.numberOfServe" class="form-control" ng-required/>
+                    <br/>
                     <label>Price pershare:</label>
                     <input type="number" ng-model="food.price" class="form-control" ng-required />
-                    <label>Time</label>
+                    <br/>
+                    <label>When will be food be available?</label>
                     <div class="time_wrapper">
                         <input type="text" size="10" class="form-control " data-trigger="onTimeSet" ng-model="sharedDate" data-autoclose="0" placeholder="Date" bs-datepicker>
+                        <br/>
                         <input type="text" size="8" class="form-control" data-trigger="onTimeSet" ng-model="sharedDate" data-autoclose="0" placeholder="Time" bs-timepicker>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-6">
+                <div class="col-xs-12 col-sm-6 uploadModule">
+                    <br/>
                     <label>
                         Images
                     </label>
+                    <caption>Upload photo, Make your food apealing</caption>
 
                     <div class="uploaded_files">
                         <div file_upload></div>
+                        <div class="uploadingOverlay" ng-show="overLayOn"><i class=' fa-spinner fa-5x fa faa-spin animated'></i>
+                        </div>
                         <div ng-repeat="link in fileLinks" class="uploaded_file_thumb">
                             <img ng-src={{link}} />
                         </div>
                     </div>
                     <div content-for='rightMenuAction'>
                         <div class="btn btn-navbar">
-                            <button type="submit" class="btn" ng-click="selling(food)">Sale</button>
+                            <button type="submit" class="btn" ng-click="selling(food)">Confirm</button>
                         </div>
-
                     </div>
                 </div>
             </form>

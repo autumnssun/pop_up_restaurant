@@ -46,6 +46,13 @@ module.exports = function(grunt) {
                     branch: 'gh-pages'
                 }
             },
+            gitIo: {
+                options: {
+                    remote: 'git@github.com:autumnssun/autumnssun.github.io.git/restaurant',
+                    branch: 'gh-pages'
+                }
+
+            }
             // local: {
             //     options: {
             //         remote: '../',

@@ -24,27 +24,26 @@
 <div class='map_list'>
     <div class="scrollable">
         <div class="scrollable-content">
+        <div ng-show="foodNotAvailable" class='foodNotAvia'><h4>No food avaiable in your area</h4></div>
             <ul class="media-list">
-                <li class="media" ng-repeat='food in markers'>
+                <li class="media" ng-repeat='food in markers | orderBy:predicate'>
                     <a class="pull-left" href="#/store/{{food.objectId}}">
                         <div class="thumb pull-left">
                             <img ng-src={{food.thumb}} class="img-rounded img-responsive">
                         </div>
                         <div class="media-body">
-                            <h4 class="media-heading">{{food.name}}</h4>
-                            <timer end-time="food.readyTime.iso">
+                            <h5 class="media-heading">{{food.name}} - {{food.numberOfServe}} serve(s)</h5>
+                            <timer end-time="food.readyTime.iso" class="remainTime">
                                 <span ng-show="days">{{days}}days,</span>
                                 <span ng-show="hours">{{hours}}hrs:</span>
                                 <span ng-show="minutes">{{minutes}}mins</span>
-                                <span ng-hide='minutes&&hours&&days'>Food have expired</span>
+                                <span ng-hide="minutes+hours+days!==0">Food have expired</span>
                             </timer>
                         </div>
                     </a>
                     <div ng-click="zoomToFood(food.latitude,food.longitude);" class="hud pull-right">
-                        <i class="fa fa-search-plus fa-2x"></i>
+                        <i class="fa-map-marker fa-2x fa aa-bouch animated"></i>
                     </div>
-
-
                 </li>
             </ul>
         </div>

@@ -14,6 +14,13 @@ angular.module('restaurantApp')
         // $rootScope.sessionToken = null;
         // $rootScope.userObjectID= null;
         // $rootScope.userName=null;
+        function setTimeCache(_time){
+            localStorageService.set('time', _time);
+        }
+
+        function getTimeCache(_time){
+            return localStorageService.get('time');
+        }
 
         function getToken() {
             return localStorageService.get('token');
@@ -74,11 +81,19 @@ angular.module('restaurantApp')
             return userDB.get('?username=' + _username + '&password=' + _password);
         }
 
+        function registerUser(_user) {
+            logout();
+            return userQuery.post(_user);
+        }
+
         // style guide
         // http://www.johnpapa.net/angular-style-guide/
 
 
         var service = {
+            setTimeCache:setTimeCache,
+            getTimeCache:getTimeCache,
+            registerUser:registerUser,
             getCurrentUserData:getCurrentUserData,
             isLogin: isLogin,
             logout: logout,

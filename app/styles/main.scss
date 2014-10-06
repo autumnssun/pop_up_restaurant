@@ -1,11 +1,14 @@
-@import '../../bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-base.min.css';
-@import '../../bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-hover.min.css';
-@import '../../bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-desktop.min.css';
- $white:#ffffff;
- $paper:#fafafa;
- $orga:#F45358;
- $blue:#3FA8B0;
- $showdowcolor:rgba(100, 100, 100, 0.5);
+@import'../../bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-base.min.css';
+/*@import '../../bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-hover.min.css';
+*/
+
+@import'../../bower_components/mobile-angular-ui/dist/css/mobile-angular-ui-desktop.min.css';
+$white:#ffffff;
+$paper:#fafafa;
+$orga:#F45358;
+$grey:#c0c0c0;
+$blue:#3FA8B0;
+$showdowcolor:rgba(100, 100, 100, 0.5);
 @mixin shadow_1() {
     $shadows: 0px 0px 4px 3px $showdowcolor;
     -moz-box-shadow: $shadows;
@@ -33,7 +36,8 @@
     @include shadow(7px);
     @include border_radius(2px);
     border: 1px soild $white;
-    margin: 16px;
+    /*    margin: 16px;
+*/
 }
 @mixin circle() {
     @include border_radius(50%);
@@ -46,9 +50,54 @@
         }
     }
 }
+.foodNotAvia {
+    padding: 16px;
+    text-align: center;
+    color: $grey;
+}
+.home {
+    .info_card {
+        li {
+            line-height: 1.3em;
+            margin-top: 0.7em;
+        }
+    }
+}
+.homeCooking {
+    background-color: $blue;
+}
+.homeDining {
+    background-color: $orga;
+}
+.homebtn {
+    text-align: center;
+    color: $paper;
+    padding: 36px;
+    icon {
+        font-size: 2em;
+        display: block;
+    }
+    i {
+        font-size: 0.7em;
+        font-style: italic;
+    }
+}
+.uploadModule {
+    padding-bottom: 36px;
+}
 .uploaded_files {
+    .uploadingOverlay {
+        width: 150px;
+        height: 150px;
+        background-color: $orga;
+        position: absolute;
+        padding-top: 40px;
+        color: $paper;
+        text-align: center;
+        margin-bottom: 48px
+    }
     .fileUpload {
-        float:left;
+        float: left;
         position: relative;
         overflow: hidden;
         text-align: center;
@@ -60,7 +109,7 @@
         i {
             font-size: 3.2em;
         }
-        input.upload {
+        .upload {
             position: absolute;
             width: 100%;
             height: 100%;
@@ -102,6 +151,9 @@
 .map_list {
     @include shadow(20);
     .media {
+        a {
+            max-width: 80%;
+        }
         .thumb {
             margin: 10px;
             width: 4em;
@@ -114,23 +166,41 @@
                 margin-left: -20%;
                 margin-right: -20%;
                 min-width: 150%;
-                min-height: 150%;
                 width: auto;
                 height: auto;
             }
         }
         .hud {
-            margin-top: 16px;
-            margin-right: 16px;
-            color: $blue;
+            margin-top: 32px;
+            margin-right: 24px;
+            cursor: pointer;
         }
         .media-body {
             margin-top: 16px;
+            h5 {
+                white-space: nowrap;
+                font-size: 1.2em;
+            }
         }
     }
 }
 .selectize-dropdown-content {
     max-height: 140px;
+}
+.selectize-input{
+    height: 36px;
+    overflow: hidden;
+}
+.amount_selection{
+    width: 70%;
+    margin-top:-5px;
+    max-width: 170px;
+    float: right;
+    margin-right:-10px;
+}
+.amount_hightlight{
+    color: $orga;
+    text-align: right;
 }
 .app-content {
     .media {
@@ -160,7 +230,6 @@
         position: absolute;
         display: inline-block;
         width: 100%;
-        @include shadow_1();
         .cooker_thumbnail {
             margin-top: 6px;
             margin-left: 6px;
@@ -168,13 +237,20 @@
             width: 48px;
             margin-right: 16px;
             @include circle();
+            img {
+                margin-left: -20%;
+                margin-right: -20%;
+                min-width: 150%;
+                width: auto;
+                height: auto;
+            }
         }
-        foodName {
+        .foodName {
             font-size: 1.4em;
             display: block;
             font-weight: 800;
         }
-        buy {
+        .buy {
             display: block;
             background-color: $blue;
             padding: 10px;
@@ -187,7 +263,7 @@
         :hover {}
     }
     .popUpStore {
-        margin-top: 80px;
+        margin-top: 65px;
         .item {
             z-index: 998;
         }
@@ -196,9 +272,7 @@
         }
         .food_gallary {
             /*            position: absolute;*/
-            @include cardview();
-            padding: 8px;
-            background-color: $paper;
+            
             img {
                 width: 100%;
                 height: auto;
@@ -216,53 +290,60 @@
     color: $white;
 }
 .info_card {
+    @include cardview();
     @include shadow(7px);
     @include border_radius(5px);
-    margin-bottom: 16px;
-    cardname {
-        background-color: $blue;
-        display: block;
-        width: 100%;
-        padding-left: 16px;
-        line-height: 2.4em;
-        color: $white;
-        font-weight: 500;
-        font-size: 1.4em;
-    }
-    .amount-box {
-        @include border_radius(0px);
-        .amount_selection {
-            width: 100%;
-            padding-right: 18px;
-            .amount_hightlight {
-                color: $orga;
-                font-weight: 800;
-            }
-        }
+    margin: 16px;
+    background-color: $paper;
+    padding: 16px;
+}
+.image_card {
+    img {
+        @include cardview();
+        @include shadow(7px);
+        @include border_radius(5px);
+        background-color: $paper;
     }
 }
-.overlay-body {
-    .cashier {
-        .buytop {
-            font-weight: 500;
-            color: $blue;
-        }
-        text-align:left;
-        height:100%;
+.cardname {
+    background-color: $blue;
+    display: block;
+    width: 100%;
+    padding: 16px;
+    padding-bottom: 10px;
+    color: $white;
+    font-weight: 500;
+    font-size: 1.4em;
+    .remainTime {
+        font-size: 0.7em;
+        font-weight: 300;
     }
+}
+.store_cashier {
+    @include cardview();
+    @include shadow(7px);
+    @include border_radius(5px);
+    .buytop {
+        font-weight: 500;
+        color: $blue;
+    }
+    text-align:left;
+    height:100%;
 }
 /* Responsive: Portrait tablets and up */
-
 /*@media screen and (min-width: 768px) {
 */
 
-@media screen and (min-width: 1020px) {
+@media screen and (min-width: 1024px) {
     .container {}
     /* Remove the padding we set earlier */
+    
     .header, .marketing, .footer {}
     /* Space out the masthead */
+    
     .header {}
     /* Remove the bottom border on the jumbotron for visual effect */
+    
     .jumbotron {} .map_warp, .map_list {
         height: 100%;
         float: right;
@@ -284,4 +365,16 @@
     font-size: 12px;
     font-weight: 500;
     white-space: nowrap;
+}
+.sample-show-hide {
+    padding: 10px;
+    border: 1px solid black;
+    background: white;
+}
+.sample-show-hide {
+    -webkit-transition: all linear 0.5s;
+    transition: all linear 0.5s;
+}
+.sample-show-hide.ng-hide {
+    opacity: 0;
 }
