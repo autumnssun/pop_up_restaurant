@@ -37,7 +37,8 @@
     "ui.bootstrap": "~0.11.2",
     "angular-strap": "~2.1.1",
     "font-awesome-animation": "~0.0.5",
-    "ng-pageslide": "~0.1.8"
+    "ng-pageslide": "~0.1.8",
+    "angulartics": "~0.17.0"
   },
   "devDependencies": {
     "angular-mocks": "~1.2.0",

@@ -64,7 +64,7 @@ angular.module('restaurantApp')
             return Restangular.all('classes/food').getList().then(function(thing) {
                 var foods = thing.data;
                 var i = 0;
-
+                console.log(foods);
                 angular.forEach(foods, function(food) {
                     food.id = i;
                     food.title = food.name;

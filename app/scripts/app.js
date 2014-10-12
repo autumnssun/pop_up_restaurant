@@ -32,7 +32,9 @@ angular
         'ui.bootstrap',
         'ui.bootstrap.datetimepicker',
         'mgcrea.ngStrap',
-        'pageslide-directive'
+        'pageslide-directive',
+        'angulartics',
+        'angulartics.google.analytics'
     ])
     // .run(function(user) {
     //     user.init({ appId: '' });
@@ -62,15 +64,6 @@ angular
                 case 'getList':
                     newResponse = response.results;
                     break;
-                    // case 'get':
-                    //     //console.log(response);
-                    //     newResponse = response;
-                    //     break;
-
-                    // case 'getRequestedUrl':
-                    //     //console.log(response);
-                    //     //newResponse = response;
-                    //     break;
                 default:
                     newResponse = response;
                     break;
@@ -118,12 +111,12 @@ angular
                 controller: 'UserprofileCtrl'
             })
             .when('/register', {
-              templateUrl: 'views/register.html',
-              controller: 'RegisterCtrl'
+                templateUrl: 'views/register.html',
+                controller: 'RegisterCtrl'
             })
             .when('/diningHistory', {
-              templateUrl: 'views/dininghistory.html',
-              controller: 'DininghistoryCtrl'
+                templateUrl: 'views/dininghistory.html',
+                controller: 'DininghistoryCtrl'
             })
             .otherwise({
                 redirectTo: '/'
