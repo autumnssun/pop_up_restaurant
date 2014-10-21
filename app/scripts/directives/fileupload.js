@@ -17,7 +17,6 @@
 angular.module('restaurantApp')
     .directive('fileUpload', function($http) {
         var the_button =
-
             '<div class="fileUpload">' +
             '<span><i class="glyphicon glyphicon-camera"/><br/>Add Photo</span>' +
             '<input type="file"  class="upload" name="file" ng-model="scope.fileLinks" onchange="angular.element(this).scope().uploadFile(this.files)" />' +

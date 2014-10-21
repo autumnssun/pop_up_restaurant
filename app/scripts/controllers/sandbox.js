@@ -8,6 +8,6 @@
  * Controller of the restaurantApp
  */
 angular.module('restaurantApp')
-    .controller('SandboxCtrl', function() {
-
+    .controller('SandboxCtrl', function($scope) {
+        $scope.value = 12;
     });

@@ -11,7 +11,7 @@
 
 <div content-for="rightMenuAction">
     <div class="btn btn-navbar">
-        <a href="#/diningHistory"><i class="fa fa-clock-o"></i> History</a>
+        <a href="#/diningHistory"><i class="fa fa-clock-o"></i>Transactions</a>
     </div>
 </div>
 <!--End of overiding menu bar-->
@@ -24,9 +24,18 @@
 <div class='map_list'>
     <div class="scrollable">
         <div class="scrollable-content">
-        <div ng-show="foodNotAvailable" class='foodNotAvia'><h4>No food avaiable in your area</h4></div>
+            <div class="sort_controll">
+                Sort by: {{orderBy_tag}}
+                <div ng-click='changeOder("readyTime.iso")'>Order by time</div>
+                <div ng-click='changeOder("address")'>address</div>
+                <div ng-click='changeOder("-price")'>price</div>
+            </div>
+            <div ng-show="foodNotAvailable" class='foodNotAvia'>
+                <h4>No food avaiable in your area</h4>
+            </div>
+
             <ul class="media-list">
-                <li class="media" ng-repeat='food in markers | orderBy:predicate'>
+                <li class="media" ng-repeat='food in markers | orderBy:orderBy_tag'>
                     <a class="pull-left" href="#/store/{{food.objectId}}">
                         <div class="thumb pull-left">
                             <img ng-src={{food.thumb}} class="img-rounded img-responsive">

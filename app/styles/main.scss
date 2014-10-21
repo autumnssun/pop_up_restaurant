@@ -187,20 +187,36 @@ $showdowcolor:rgba(100, 100, 100, 0.5);
 .selectize-dropdown-content {
     max-height: 140px;
 }
-.selectize-input{
+.selectize-input {
     height: 36px;
     overflow: hidden;
 }
-.amount_selection{
+.amount_selection {
     width: 70%;
-    margin-top:-5px;
+    margin-top: -5px;
     max-width: 170px;
     float: right;
-    margin-right:-10px;
+    margin-right: -10px;
 }
-.amount_hightlight{
+.amount_hightlight {
     color: $orga;
     text-align: right;
+}
+.cooker_thumbnail {
+    margin-top: 6px;
+    margin-left: 6px;
+    height: 96px;
+    width: 96px;
+    margin-right: 16px;
+    @include circle();
+    float: left;
+    img {
+        margin-left: -20%;
+        margin-right: -20%;
+        min-width: 150%;
+        width: auto;
+        height: auto;
+    }
 }
 .app-content {
     .media {
@@ -378,3 +394,19 @@ $showdowcolor:rgba(100, 100, 100, 0.5);
 .sample-show-hide.ng-hide {
     opacity: 0;
 }
+
+.dataDump{
+    margin-bottom: 30px;
+}
+
+.cooker_thumbnail{
+    p{
+        position: relative;
+        margin-top: -100%;
+        text-align: center;
+        color: $paper;
+        font-size: 1.3em;
+        z-index: 999;
+    }
+}
+@import'cache.scss';

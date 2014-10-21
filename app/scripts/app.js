@@ -34,7 +34,8 @@ angular
         'mgcrea.ngStrap',
         'pageslide-directive',
         'angulartics',
-        'angulartics.google.analytics'
+        'angulartics.google.analytics',
+        'angular.filter'
     ])
     // .run(function(user) {
     //     user.init({ appId: '' });

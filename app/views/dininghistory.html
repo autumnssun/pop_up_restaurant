@@ -7,7 +7,22 @@
 </div>
 <div class="scrollable">
     <div class="scrollable-content">
-    	{{data}}
+
+        <div ng-repeat="transation in data" class="row">
+            <div class="col-lg-12 transactions">
+                <div class="cooker_thumbnail">
+                    <img ng-src='{{transation.customerData.photo.url}}' />
+                    <p>{{transation.customerData.username}}</p>
+                </div>
+                <div class=" ">
+                    <img ng-src="{{transation.foodData.photos[0]}}" />
+                    <p>buys from</p>
+                </div>
+                <div class="cooker_thumbnail">
+                    <img ng-src='{{transation.cookerData.photo.url}}' />
+                    <p>{{transation.cookerData.username}}</p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-

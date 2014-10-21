@@ -18,7 +18,7 @@ angular.module('restaurantApp')
             localStorageService.set('time', _time);
         }
 
-        function getTimeCache(_time){
+        function getTimeCache(){
             return localStorageService.get('time');
         }
 
@@ -67,7 +67,15 @@ angular.module('restaurantApp')
 
         function getCurrentUserData() {
             return userQuery.get(getUserObjecID()).then(function(data) {
-                console.log(data);
+                //console.log(data);
+                return data.data;
+            });
+        }
+
+
+        function getUserData(_id) {
+            return userQuery.get(_id).then(function(data) {
+                //console.log(data);
                 return data.data;
             });
         }
@@ -91,6 +99,7 @@ angular.module('restaurantApp')
 
 
         var service = {
+            getUserData:getUserData,
             setTimeCache:setTimeCache,
             getTimeCache:getTimeCache,
             registerUser:registerUser,

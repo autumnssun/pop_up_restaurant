@@ -17,7 +17,7 @@ angular.module('restaurantApp')
         $scope.transaction={};
         $scope.thisFood={};
         $scope.thisFood.readyTime={};
-        $scope.thisFood.readyTime.iso="34123";
+        $scope.thisFood.readyTime.iso='34123083';
         $scope.showCashier = false;
         foodService.buildCompledFood(storeID).then(function(_return) {
             $scope.thisFood = _return;

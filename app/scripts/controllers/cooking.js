@@ -8,9 +8,9 @@
  * Controller of the restaurantApp
  */
 angular.module('restaurantApp')
-    .controller('CookingCtrl', function($scope, userService, foodService, addressService,$location) {
+    .controller('CookingCtrl', function($scope, userService, foodService, addressService, $location,ngToast) {
         // .controller('CookingCtrl', function($scope) {
-        if(!userService.isLogin()){
+        if (!userService.isLogin()) {
             $location.path('login');
         }
         $scope.food = {};
@@ -38,15 +38,18 @@ angular.module('restaurantApp')
         };
 
         $scope.selling = function(_food) {
-            //appending photo array and sharedTime array
             $scope.food.photos = $scope.fileLinks;
             $scope.food.readyTime = onTimeSet($scope.sharedDate);
-            if($scope.food.photos!==null&&$scope.food.readyTime!==null&&$scope.food.location!==null&&$scope.food.numberOfServe>0){
+            $scope.food.active=true;
+            if ($scope.sellingFood.$valid) {
                 foodService.saleFood(_food);
                 $location.path('dining');
-            }else{
-                console.log('can not sell missing information');
-            }            
+            } else {
+                 ngToast.create({
+                    content: '<label> Missing information </label>',
+                    class:'danger'
+                });
+            }
         };
 
     });
