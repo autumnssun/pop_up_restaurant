@@ -9,7 +9,21 @@
  */
 angular.module('restaurantApp')
     .controller('MapCtrl', function($scope, $http, $location, foodService, geolocation) {
-        $scope.orderBy_tag='readyTime.iso';
+
+        //my location marker
+
+        //ends of my locmaker
+        $scope.sortbylist = [{
+            'display': 'Cheap 1st',
+            'model': 'price'
+        },{
+            'display': 'Cheap lasst',
+            'model': 'price'
+        }];
+        $scope.orderBy_tag = {
+            'display': 'Cheap 1st',
+            'model': 'price'
+        };
 
         $scope.foodNotAvailable = true;
         //get user current location as long as it is available zoom user to their current location
@@ -17,6 +31,15 @@ angular.module('restaurantApp')
             // console.log(data);
             $scope.map.center.latitude = data.coords.latitude;
             $scope.map.center.longitude = data.coords.longitude;
+
+            $scope.myloc = {
+                id: 0,
+                coords: {
+                    latitude: $scope.map.center.latitude,
+                    longitude: $scope.map.center.longitude
+                }
+            };
+            console.log($scope.myloc);
 
         });
         foodService.getAllFood().then(function(data) {
@@ -38,8 +61,8 @@ angular.module('restaurantApp')
 
             }
         };
-        $scope.changeOder=function (tag){
-             $scope.orderBy_tag=tag;
+        $scope.changeOder = function(tag) {
+            $scope.orderBy_tag = tag;
         };
 
         $scope.zoomToFood = function(_lat, _long) {

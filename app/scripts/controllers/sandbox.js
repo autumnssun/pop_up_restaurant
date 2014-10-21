@@ -9,5 +9,11 @@
  */
 angular.module('restaurantApp')
     .controller('SandboxCtrl', function($scope) {
-        $scope.value = 12;
+        $scope.sortbylist = [{
+            'display': 'Cheap 1st',
+            'model': 'price'
+        }, {
+            'display': 'Cheap lasst',
+            'model': 'price'
+        }];
     });
