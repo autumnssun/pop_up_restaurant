@@ -12,13 +12,14 @@
 
                 <label>Contact Number:</label>
                 <caption>allows dinner contact you</caption>
-                <input type="phone" name="password" ng-model='user.contactNumber' class="form-control" placeholder="phone number" required="">
+                <input type="tel" name="user_tel" ng-model='user.contactNumber' class="form-control" placeholder="phone number" required="">
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Register now</button>
 
             </form>
             <br/>
             <a href="login">Already Register?</a>
         </div>
+        <button ng-click="fbLogin()">Facebook login</button>
     </div>
 </div>
 <div content-for="title">

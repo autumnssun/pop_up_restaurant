@@ -1,0 +1,38 @@
+<div class="foodPortfolio">
+    <div class="scrollable">
+        <div class="scrollable-content"  hm-panmove="tada" hm-tap='tada2' hm-panend="endTouch" >
+
+            <!--  <div class="jumbotron">
+                <a href='#/cooker' class="warpper">
+                    <div class="creating"></div>
+                </a>
+            </div> -->
+            <div class="food_record info_card row my-element" ng-repeat="food in allfood" ng-show='food.showme' >
+                <div class="circular" style="background-image:url('{{food.thumb}}');"></div>
+                <div class="foodDetail">{{food.name}}
+                    <div class='hightlight'>{{food.numberOfServe}} -serves</div>
+                    <p>Price: {{food.price | currency}}/share</p>
+                </div>
+
+                <a class="warpper pull-right" ng-click="selectMe(food)">
+                    <div class="selectme"></div>
+                </a>
+
+                <a class="warpper pull-right" ng-click="deleteMe(food);">
+                    <div class="removing"></div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="my_thing" ng-style="cordinate"></div>
+
+<div content-for="title">
+    <span>Your cooking portfolio</span>
+</div>
+
+<div content-for="rightMenuAction">
+    <a href='#/cooker' class="warpper pull-right">
+        <div class="creating"></div>
+    </a>
+</div>

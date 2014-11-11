@@ -3,24 +3,34 @@
     <span>WELLCOME</span>
 </div>
 
-<div content-for="right MenuAction">
-    <div ng-show='showLoginBtn' class="btn btn-navbar" href="#/login">
-        <i class="fa"></i>Login
+
+<div content-for="rightMenuAction">
+
+    <div class="btn btn-navbar">
+        <a href='#/register'>Register</a>
     </div>
 </div>
+
 <!--End of overiding menu bar-->
 
 <div class="scrollable">
     <div class="scrollable-content home">
-        <div class="info_card">
-            <h1>{{userName}}!</h1>
-            <i>Welcome to pop-up restaurant, we are here to</i>
-            <li>Help busy people who do not have time to cook, but still want home cook food straight form the stove.</li>
-            <li>Help awesome, passonate homecooks sell your food.</li>
+        <div class="jumbotron">
+            <h1 ng-show="userName">Hi,
+                <span >{{userName}}!</span>
+            </h1>
+
+            <p>Welcome to pop-up restaurant, we are here to:</p>
+            <div class="row">
+                <p class="col-sm-6 a">Help busy people who do not have time to cook, but still want home cook food straight form the stove.</p>
+                <p class="col-sm-6 b">Help awesome, passionate homecooks sell your food.</p>
+            </div>
+
+
         </div>
         <div class="row info_card">
             <a href='#/cooker' class="homeCooking homebtn col-xs-6">
-                <icon class="glyphicon glyphicon-fire  "></icon>
+                <icon class="fa fa-birthday-cake "></icon>
                 <p>Cook & Sell</p>
                 <i>ammazing foods</i>
             </a>
@@ -29,6 +39,12 @@
                 <p>Buy & Eat</p>
                 <i>ammazing foods</i>
             </a>
+        </div>
+        <div class="jumbotron" ng-hide="userName">
+            <button  class="btn btn-primary btn-lg"><a href='#/register' style="color:white">Get your free account</a>
+            </button>
+            <button ng-hide="userName" class="btn btn-default btn-lg"><a href='#/login'>Login</a>
+            </button>
         </div>
     </div>
 </div>

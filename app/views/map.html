@@ -26,7 +26,7 @@
 <div class='map_list'>
 
     <div class="scrollable">
-            <ui-select ng-model="person.selected" theme="select2" ng-disabled="disabled" style="min-width: 300px;">
+            <!-- <ui-select ng-model="person.selected" theme="select2" ng-disabled="disabled" style="min-width: 300px;">
                 <ui-select-match placeholder="Select a person in the list or search his name/age...">{{$select.selected.name}}</ui-select-match>
                 <ui-select-choices repeat="person in people | propsFilter: {name: $select.search, age: $select.search}">
                     <div ng-bind-html="person.name | highlight: $select.search"></div>
@@ -35,7 +35,7 @@
                         <span ng-bind-html="''+person.age | highlight: $select.search"></span>
                     </small>
                 </ui-select-choices>
-            </ui-select>
+            </ui-select> -->
             <!-- <button class="btn btn-default dropdown-toggle" toggle="dropdown">
                 {{orderBy_tag.display}}
             </button>

@@ -56,7 +56,7 @@ angular.module('restaurantApp')
         var getAllFood = function() {
             return Restangular.all('classes/food').getList().then(function(thing) {
                 var foods = thing.data;
-                var returnfood=[];
+                var returnfood = [];
                 var i = 0;
                 angular.forEach(foods, function(food) {
                     if (food.active) {
@@ -109,7 +109,8 @@ angular.module('restaurantApp')
                 // });
                 return returnObject;
             }, function() {
-                $location.path('dining');
+                $location.path('foodPortfolio');
+
             });
         };
 

@@ -61,6 +61,7 @@ angular.module('restaurantApp')
 
             }
         };
+        console.log($scope.map);
         $scope.changeOder = function(tag) {
             $scope.orderBy_tag = tag;
         };

@@ -11,6 +11,33 @@
             <caption>Let's Show your food to eveybody with some information</caption>
 
         </div>
+        <div class="col-xs-12 col-sm-6 uploadModule">
+            <br/>
+            <label>
+                Images
+            </label>
+            <caption>Upload photo, Make your food apealing</caption>
+
+            <div class="uploaded_files">
+                <div file_upload></div>
+                <div class="uploadingOverlay" ng-show="overLayOn"><i class=' fa-spinner fa-5x fa faa-spin animated'></i>
+                </div>
+                <div ng-repeat="link in fileLinks" class="uploaded_file_thumb">
+                    <img ng-src={{link}} />
+                </div>
+            </div>
+            <div content-for='leftMenuAction'>
+                <div class="btn btn-navbar">
+                    <i class="fa"></i><a href="#/foodPortfolio">Back</a>
+                </div>
+            </div>
+
+            <div content-for='rightMenuAction'>
+                <div class="btn btn-navbar">
+                    <button type="submit" class="btn" ng-click="selling(food)">Confirm</button>
+                </div>
+            </div>
+        </div>
         <form class="simple-form" name="sellingFood">
 
             <div class="col-xs-12 col-sm-6">
@@ -40,27 +67,7 @@
                     <input type="text" size="8" class="form-control" data-trigger="onTimeSet" ng-model="sharedDate" data-autoclose="0" placeholder="Time" bs-timepicker required>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-6 uploadModule">
-                <br/>
-                <label>
-                    Images
-                </label>
-                <caption>Upload photo, Make your food apealing</caption>
 
-                <div class="uploaded_files">
-                    <div file_upload></div>
-                    <div class="uploadingOverlay" ng-show="overLayOn"><i class=' fa-spinner fa-5x fa faa-spin animated'></i>
-                    </div>
-                    <div ng-repeat="link in fileLinks" class="uploaded_file_thumb">
-                        <img ng-src={{link}} />
-                    </div>
-                </div>
-                <div content-for='rightMenuAction'>
-                    <div class="btn btn-navbar">
-                        <button type="submit" class="btn" ng-click="selling(food)">Confirm</button>
-                    </div>
-                </div>
-            </div>
 
         </form>
     </div>

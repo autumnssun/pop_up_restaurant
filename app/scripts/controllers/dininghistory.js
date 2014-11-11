@@ -20,6 +20,9 @@ angular.module('restaurantApp')
                 });
                 userService.getUserData(value.customer.objectId).then(function(cdata) {
                     value.customerData = (cdata);
+                    if (value.customerData.objectId ===userService.getUserID()) {
+                        value.hideme = true;
+                    }
                 });
             });
         });

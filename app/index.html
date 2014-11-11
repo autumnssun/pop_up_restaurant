@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
     <link rel="apple-touch-icon" href="images/icon.png" />
     <link rel="apple-touch-icon" sizes="72x72" href="images/icon.png" />
@@ -32,9 +32,16 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
 </head>
 
-<body ng-app="restaurantApp">
+<body ng-controller="IndexcontrollerCtrl" ng-app="restaurantApp">
+    <!-- <div class="my_thing" ng-style="cordinate"></div> -->
+
+
     <!--[if lt IE 7]>
       fullscreen
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -52,7 +59,8 @@
                 <div class="list-group" toggle="off" bubble target="mainSidebar">
                     <a class="list-group-item" href="#/">Home <i class="fa fa-chevron-right pull-right"></i></a>
                     <a class="list-group-item" href="#/dining">Dinning<i class="fa fa-chevron-right pull-right"></i></a>
-                    <a class="list-group-item" href="#/cooker">Cooking<i class="fa fa-chevron-right pull-right"></i></a>
+                    <a class="list-group-item" href="#/foodPortfolio">Cooking<i class="fa fa-chevron-right pull-right"></i></a>
+
 
                 </div>
 
@@ -62,6 +70,9 @@
                 <div class="list-group ">
                     <a class="list-group-item" href="https://github.com/autumnssun/uppup_restaurant/issues" target="_new">Git hub Issue Tracking<i class="fa fa-chevron-right pull-right"></i></a>
                     <a class="list-group-item" href="http://goo.gl/forms/BWSvIm37cT" target="_new">Send feeback</a>
+                </div>
+                <div class="list-group">
+                    <a class="list-group-item" href="#/sandbox">Testing<i class="fa fa-chevron-right pull-right"></i></a>
                 </div>
 
             </div>
@@ -88,12 +99,6 @@
             </div>
         </div>
 
-        <!-- <div class="navbar navbar-app navbar-absolute-bottom">
-            <div class="btn-group justified">
-                <a href="#/route1" class="btn btn-navbar btn-icon-only"><i class="fa fa-home fa-navbar"></i></a>
-                <a href="#/route2" class="btn btn-navbar btn-icon-only"><i class="fa fa-list fa-navbar"></i></a>
-            </div>
-        </div> -->
 
         <div class="app-body">
             <ng-view class="app-content"></ng-view>
@@ -184,6 +189,7 @@
     <script src="bower_components/angulartics/src/angulartics.js"></script>
     <script src="bower_components/angulartics/src/angulartics-adobe.js"></script>
     <script src="bower_components/angulartics/src/angulartics-chartbeat.js"></script>
+    <script src="bower_components/angulartics/src/angulartics-cnzz.js"></script>
     <script src="bower_components/angulartics/src/angulartics-flurry.js"></script>
     <script src="bower_components/angulartics/src/angulartics-ga-cordova.js"></script>
     <script src="bower_components/angulartics/src/angulartics-ga.js"></script>
@@ -200,6 +206,9 @@
     <script src="bower_components/angular-filter/dist/angular-filter.js"></script>
     <script src="bower_components/fastclick/lib/fastclick.js"></script>
     <script src="bower_components/angular-ui-select/dist/select.js"></script>
+    <script src="bower_components/hammerjs/hammer.js"></script>
+    <script src="bower_components/ryanmullins-angular-hammer/angular.hammer.js"></script>
+    <script src="bower_components/angular-facebook/lib/angular-facebook.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <script src="http://www.parsecdn.com/js/parse-1.2.13.min.js"></script>
@@ -219,6 +228,10 @@
     <script src="scripts/controllers/register.js"></script>
     <script src="scripts/controllers/dininghistory.js"></script>
     <script src="scripts/services/transactionservices.js"></script>
+    <script src="scripts/controllers/foodportfolio.js"></script>
+    <script src="scripts/controllers/foodportfoliodetail.js"></script>
+    <script src="scripts/services/databouncer.js"></script>
+    <script src="scripts/controllers/indexcontroller.js"></script>
     <!-- endbuild -->
 </body>
 

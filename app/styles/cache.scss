@@ -1,11 +1,213 @@
-.transations{
-	div{
-		float: left;
-		width: 100px;
-		height: 100px;
-	}
+$white:#ffffff;
+$paper:#fafafa;
+$blue:#F45358;
+$grey:#c0c0c0;
+$blue:#3FA8B0;
+.transations {
+    div {
+        float: left;
+        width: 100px;
+        height: 100px;
+    }
 }
-
-.sort_control{
-	height: 64px; 
+.sort_control {
+    height: 64px;
+}
+.animated_controls {
+    min-height: 36px;
+}
+.selectme {
+    background-color: $blue;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+}
+.selectme:before {
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0.4;
+    width: 100%;
+    height: 100%;
+    content: "";
+    display: block;
+    -webkit-transform-origin: 50% 50%;
+    -webkit-animation: selectme 2s infinite cubic-bezier(0, .015, .295, 1);
+}
+.warpper {
+    display: inline-block;
+    min-height: 36px;
+    min-width: 36px;
+    margin-right: 0.5em;
+    margin-top: 0.5em;
+    div {
+        width: 36px;
+        height: 36px;
+    }
+}
+.removing {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: $blue;
+    -webkit-animation: removing 3s infinite cubic-bezier(0, .015, .295, 1);
+    -webkit-transform-origin: 50% 50%;
+    z-index: 4;
+}
+.modifying {
+    background-color: $blue;
+    width: 100%;
+    height: 100%;
+    -webkit-animation: modifing 0.7s infinite cubic-bezier(0, .015, .295, 1) alternate;
+}
+.creating {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: $blue;
+    -webkit-animation: creating 4s 2s infinite cubic-bezier(0, .015, .295, 1);
+    -webkit-transform-origin: 50% 50%;
+    z-index: 4;
+}
+.removing {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: $blue;
+    -webkit-animation: removing 3s infinite cubic-bezier(0, .015, .295, 1);
+    -webkit-transform-origin: 50% 50%;
+    z-index: 4;
+}
+@-webkit-keyframes modifing {
+    0% {
+        border-radius: 0% 0% 0% 0%;
+    }
+    10% {
+        border-radius: 0% 0% 0% 0%;
+    }
+    30% {
+        border-radius: 50% 0% 0% 0%;
+    }
+    50% {
+        border-radius: 50% 50% 0% 0%;
+    }
+    70% {
+        border-radius: 50% 50% 50% 0%;
+    }
+    90% {
+        border-radius: 50% 50% 50% 50%;
+    }
+    100% {
+        border-radius: 50% 50% 50% 50%;
+    }
+}
+@-webkit-keyframes removing {
+    0% {
+        opacity: 1;
+        -webkit-transform: scale(0.9);
+    }
+    10% {
+        opacity: 0.9;
+        -webkit-transform: scale(0.85);
+    }
+    25% {
+        opacity: 1;
+        -webkit-transform: scale(0.9);
+    }
+    30% {
+        opacity: 1;
+        -webkit-transform: scale(0.9);
+    }
+    50% {
+        opacity: 0;
+        -webkit-transform: scale(0);
+    }
+    70% {
+        opacity: 0;
+        -webkit-transform: scale(0);
+    }
+    80% {
+        opacity: 0;
+        -webkit-transform: scale(0);
+    }
+    100% {
+        opacity: 0;
+        -webkit-transform: scale(0);
+    }
+}
+@-webkit-keyframes creating {
+    0% {
+        opacity: 1;
+        -webkit-transform: scale(0);
+    }
+    30% {
+        opacity: 1;
+        -webkit-transform: scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        -webkit-transform: scale(1.1);
+    }
+    55% {
+        opacity: 1;
+        -webkit-transform: scale(1);
+    }
+    99% {
+        opacity: 1;
+        -webkit-transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        -webkit-transform: scale(0);
+    }
+}
+@-webkit-keyframes selectme {
+    0% {
+        opacity: 1;
+        -webkit-transform: scale(0);
+    }
+    100% {
+        opacity: 0;
+        -webkit-transform: scale(1);
+    }
+}
+.foodPortfolio {
+    .food_record {
+        .circular {
+            float: left;
+        }
+        .foodDetail {
+            float: left;
+            display: inline-block;
+            font-size: 1.2em;
+            color: $blue;
+            font-weight: 500;
+            p {
+                color: $grey;
+                font-size: 0.8em;
+            }
+        }
+        .warpper {
+            margin-top: 1.2em;
+        }
+    }
+}
+.my-element.ng-hide-add, .my-element.ng-hide-remove {
+    transition: 0.7s ease;
+}
+.my-element.ng-hide-add-active, .my-element.ng-hide-remove-active {
+    /* the transition is defined in the active class */
+    transition: 0.7s ease all;
+}
+.my-element.ng-hide-add {
+    opacity: 1;
+}
+.my-element.ng-hide-add.ng-hide-add-active {
+    opacity: 0;
+}
+.my-element.ng-hide-remove {
+    opacity: 0;
+}
+.my-element.ng-hide-remove.ng-hide-remove-active {
+    /*margin-top: 0;*/
+    opacity: 1;
 }

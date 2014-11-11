@@ -50,6 +50,9 @@ $showdowcolor:rgba(100, 100, 100, 0.5);
         }
     }
 }
+.hightlight {
+    color: $blue;
+}
 .foodNotAvia {
     padding: 16px;
     text-align: center;
@@ -239,21 +242,6 @@ $showdowcolor:rgba(100, 100, 100, 0.5);
         position: absolute;
         display: inline-block;
         width: 100%;
-        .cooker_thumbnail {
-            margin-top: 6px;
-            margin-left: 6px;
-            height: 48px;
-            width: 48px;
-            margin-right: 16px;
-            @include circle();
-            img {
-                margin-left: -20%;
-                margin-right: -20%;
-                min-width: 150%;
-                width: auto;
-                height: auto;
-            }
-        }
         .foodName {
             font-size: 1.4em;
             display: block;
@@ -297,6 +285,12 @@ $showdowcolor:rgba(100, 100, 100, 0.5);
     margin-top: 16px;
     font-weight: 700;
     color: $white;
+}
+.a {
+    color: $blue;
+}
+.b{
+    color: $orga;
 }
 .info_card {
     @include cardview();
@@ -387,13 +381,35 @@ $showdowcolor:rgba(100, 100, 100, 0.5);
 .sample-show-hide.ng-hide {
     opacity: 0;
 }
-
-.dataDump{
+.dataDump {
     margin-bottom: 30px;
 }
-
-.cooker_thumbnail{
-    p{
+.circular {
+    width: 5em;
+    height: 5em;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50;
+    background: center;
+    background-color: $paper;
+    background-size: 130% auto;
+    margin-right: 1em;
+}
+.cooker_thumbnail {
+    margin-top: 6px;
+    margin-left: 6px;
+    height: 48px;
+    width: 48px;
+    margin-right: 16px;
+    @include circle();
+    img {
+        margin-left: -20%;
+        margin-right: -20%;
+        min-width: 150%;
+        width: auto;
+        height: auto;
+    }
+    p {
         position: relative;
         margin-top: -100%;
         text-align: center;
@@ -401,5 +417,20 @@ $showdowcolor:rgba(100, 100, 100, 0.5);
         font-size: 1.3em;
         z-index: 999;
     }
+}
+.my_thing{
+    visibility: hidden;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    -o-border-radius:50%;
+    background-color: red;
+    position: absolute;
+    top:-100;
+    right:-100;
+    z-index: 77;
+
 }
 @import'cache.scss';

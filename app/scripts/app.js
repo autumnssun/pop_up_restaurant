@@ -35,16 +35,21 @@ angular
         'pageslide-directive',
         'angulartics',
         'angulartics.google.analytics',
-        'angular.filter'
+        'angular.filter',
+        'hmTouchEvents',
+        'facebook'
     ])
     // .run(function(user) {
     //     user.init({ appId: '' });
     // });
-    .config(function($routeProvider, cfpLoadingBarProvider, RestangularProvider, uiSelectConfig) {
+    .config(function($routeProvider, cfpLoadingBarProvider, RestangularProvider, uiSelectConfig,FacebookProvider) {
         cfpLoadingBarProvider.includeSpinner = false; //configuring the loading theme
 
+        //uiSelectConfig.theme = 'selectize'; //configuring the selection theme
         uiSelectConfig.theme = 'selectize'; //configuring the selection theme
 
+        //configure facebook thing
+        FacebookProvider.init('1619826378244292');
 
         //congfiguring restangular directive
         //master key : gpCg1eiaS0HRGqbb1fxqaoaFzHlvLEveSFbPlOC8
@@ -55,7 +60,7 @@ angular
             'Content-Type': 'application/json'
         });
         RestangularProvider.setRestangularFields({
-            //id: 'objectId'
+            id: 'objectId'
         });
         RestangularProvider.setFullResponse(true);
         RestangularProvider.setResponseExtractor(function(response, operation) {
@@ -118,6 +123,18 @@ angular
             .when('/diningHistory', {
                 templateUrl: 'views/dininghistory.html',
                 controller: 'DininghistoryCtrl'
+            })
+            .when('/foodPortfolio', {
+              templateUrl: 'views/foodportfolio.html',
+              controller: 'FoodportfolioCtrl'
+            })
+            .when('/foodPortfolioDetail', {
+              templateUrl: 'views/foodportfoliodetail.html',
+              controller: 'FoodportfoliodetailCtrl'
+            })
+            .when('/foodPortfolioDetail/:dta', {
+                templateUrl: 'views/foodportfoliodetail.html',
+                controller: 'FoodportfoliodetailCtrl'
             })
             .otherwise({
                 redirectTo: '/'

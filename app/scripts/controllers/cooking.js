@@ -43,7 +43,7 @@ angular.module('restaurantApp')
             $scope.food.active=true;
             if ($scope.sellingFood.$valid) {
                 foodService.saleFood(_food);
-                $location.path('dining');
+                $location.path('foodPortfolio');
             } else {
                  ngToast.create({
                     content: '<label> Missing information </label>',

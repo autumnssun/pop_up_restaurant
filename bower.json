@@ -20,7 +20,7 @@
     "overthrow-dist": "~0.7.0",
     "angular-ui-router": "~0.2.11",
     "restangular": "~1.4.0",
-    "selectize": "~0.11.0",
+    "selectize": "~0.11.2",
     "authenticateJS": "~0.1.1",
     "angular-notification": "~0.2.3",
     "ngtoast": "~1.2.0",
@@ -40,7 +40,9 @@
     "angulartics": "~0.17.0",
     "angular-filter": "~0.4.9",
     "fastclick": "~1.0.3",
-    "angular-ui-select": "~0.8.3"
+    "angular-ui-select": "0.8.3",
+    "ryanmullins-angular-hammer": "~2.1.0",
+    "angular-facebook": "~0.2.3"
   },
   "devDependencies": {
     "angular-mocks": "~1.2.0",

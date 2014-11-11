@@ -91,6 +91,7 @@ angular.module('restaurantApp')
 
         function registerUser(_user) {
             logout();
+            console.log(_user);
             return userQuery.post(_user);
         }
 

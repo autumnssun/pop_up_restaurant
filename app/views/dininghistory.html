@@ -8,21 +8,17 @@
 <div class="scrollable">
     <div class="scrollable-content">
 
-        <div ng-repeat="transation in data" class="row">
-            <div class="col-lg-12 transactions">
-                <div class="cooker_thumbnail">
-                    <img ng-src='{{transation.customerData.photo.url}}' />
-                    <p>{{transation.customerData.username}}</p>
-                </div>
-                <div class=" ">
-                    <img ng-src="{{transation.foodData.photos[0]}}" />
-                    <p>buys from</p>
-                </div>
-                <div class="cooker_thumbnail">
-                    <img ng-src='{{transation.cookerData.photo.url}}' />
-                    <p>{{transation.cookerData.username}}</p>
-                </div>
-            </div>
+        <div ng-repeat="transation in data" class="info_card row" ng-show="transation.hideme && transation.cookerData.photo.url&& transation.foodData.photos[0]">
+<!--         {{transation.showme}} -->
+            <div class="circular col-sx-3" style="background-image:url('{{transation.customerData.photo.url}}');"></div>
+            <div class="circular col-sx-3" style="background-image:url('{{transation.foodData.photos[0]}}');"></div>
+            <div class="circular col-sx-3" style="background-image:url('{{transation.cookerData.photo.url}}');"></div>
+            <div class="circular col-sx-3">For:{{transation.foodData.price|currency}}</div>
         </div>
     </div>
 </div>
+<style>
+    .circular{
+        float: left;
+    }
+</style>
