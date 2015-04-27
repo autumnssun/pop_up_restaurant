@@ -27,7 +27,7 @@ angular.module('restaurantApp')
         };
 
         $scope.doSubmit = function() {
-            userService.login($scope.user.username, $scope.user.password).then(function(data) {
+            userService.login($scope.user.username, $scope.user.password).f
                 console.log(data.data);
                 //saving important information into user services
                 userService.setSessionToken(data.data.sessionToken);
